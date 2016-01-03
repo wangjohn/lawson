@@ -14,7 +14,7 @@ Template.tee_times.helpers
     dates = getNextDays(DAYS_AVAILABLE)
     weeks = []
     for date in dates
-      currentWeek = moment(date).format("w YYYY")
+      currentWeek = moment(getMonday(date)).format("M/D/YYYY")
       if weeks[weeks.length-1]?.currentWeek == currentWeek
         weekObject = weeks[weeks.length-1]
       else
@@ -22,6 +22,14 @@ Template.tee_times.helpers
         weeks.push(weekObject)
       weekObject.dates.push(date)
     weeks
+
+getMonday = (date) ->
+  day = date.getDay()
+  if day == 0
+    diff = 8
+  else
+    diff = (day + 1)
+  new Date(date - 1000*60*60*24*diff)
 
 getNextDays = (daysForward) ->
   result = [new Date()]
