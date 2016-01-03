@@ -6,6 +6,9 @@ Template.login.events
     Meteor.loginWithPassword username, password, (error) ->
       Session.set("login_error", error)
 
+Template.login.rendered = ->
+  Session.set("login_error", null)
+
 Template.login.helpers
   errorClass: ->
     "error" if Session.get("login_error")
