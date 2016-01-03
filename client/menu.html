@@ -4,14 +4,20 @@
       <h1 class="ui header">PGC</h1>
     </div>
     {{#if currentUser}}
-      <a class="item">Reservations</a>
-      <a class="item">Book a time</a>
+      <a class="item">
+        <i class="large home icon"></i>
+        My Reservations
+      </a>
+      <a class="item" href="/tee_times">
+        <i class="large ticket icon"></i>
+        Book a time
+      </a>
     {{/if}}
     <div class="right menu">
       {{#if currentUser}}
-        <div class="item">
-          <i class="link large settings icon"></i>
-        </div>
+        <a class="item">
+          <i class="large settings icon"></i>
+        </a>
         <div class="item">
           <a class="ui primary button" id="sign-out">Sign out</a>
         </div>
