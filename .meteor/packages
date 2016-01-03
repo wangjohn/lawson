@@ -21,3 +21,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 coffeescript
 accounts-password
 semantic:ui
+flemay:less-autoprefixer
+semantic:ui-css
+iron:router

@@ -1,0 +1,36 @@
+<template name="login">
+  <div class="ui middle center aligned grid">
+    <div class="column login-column">
+      <h2 class="ui image header">
+        <img src="/images/logo.png" class="image">
+        <div class="content">
+          Sign in to your account
+        </div>
+      </h2>
+      <form class="ui large form sign-in {{errorClass}}">
+        {{#if errorClass}}
+          <div class="ui error message">
+            <ul class="list">
+              <li>{{error.reason}}</li>
+            </ul>
+          </div>
+        {{/if}}
+        <div class="ui segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="username" placeholder="Username">
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password">
+            </div>
+          </div>
+          <button type="submit" class="ui fluid large submit button">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>

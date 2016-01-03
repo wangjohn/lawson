@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+
+.column.login-column {
+  max-width: 450px;
+  margin-top: 50px;
+}
+
+.column.login-column .form .ui.input {
+  width: 100%;
+}
