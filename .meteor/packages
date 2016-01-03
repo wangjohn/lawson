@@ -24,3 +24,4 @@ semantic:ui
 flemay:less-autoprefixer
 semantic:ui-css
 iron:router
+momentjs:moment
