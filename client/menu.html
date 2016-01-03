@@ -3,15 +3,20 @@
     <div class="item">
       <h1 class="ui header">PGC</h1>
     </div>
-    <a class="item">Reservations</a>
-    <a class="item">Book a time</a>
+    {{#if currentUser}}
+      <a class="item">Reservations</a>
+      <a class="item">Book a time</a>
+    {{/if}}
     <div class="right menu">
-      <div class="item">
-        <i class="link large settings icon"></i>
-      </div>
-      <div class="item">
-        <a class="ui primary button" href="/login">Sign in</a>
-      </div>
+      {{#if currentUser}}
+        <div class="item">
+          <i class="link large settings icon"></i>
+        </div>
+      {{else}}
+        <div class="item">
+          <a class="ui primary button" href="/login">Sign in</a>
+        </div>
+      {{/if}}
     </div>
   </div>
 </template>
