@@ -1,4 +1,8 @@
+TeeTimes = new Mongo.Collection("tee_times")
+
 DAYS_AVAILABLE = 14
+
+Meteor.subscribe("tee_times")
 
 Template.tee_times.helpers
   dateData: ->
