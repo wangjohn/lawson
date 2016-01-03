@@ -2,36 +2,22 @@
   <div class="ui stackable grid">
     <div class="four wide column">
       <div class="ui vertical sticky menu">
-        <div class="item">
-          Week of 1/4/2016
-          <div class="menu">
-            <a class="item">Monday 1/4/2016</a>
-            <a class="item">Tuesday 1/5/2016</a>
-            <a class="item">Wednesday 1/6/2016</a>
-            <a class="item">Thursday 1/7/2016</a>
-            <a class="item">Friday 1/8/2016</a>
-            <a class="item">Saturday 1/9/2016</a>
-            <a class="item">Sunday 1/10/2016</a>
+        {{#each menuData}}
+          <div class="item">
+            {{this.currentWeek}}
+            <div class="menu">
+              {{#each this.dates}}
+                <a class="item">{{formatDay this}}</a>
+              {{/each}}
+            </div>
           </div>
-        </div>
-        <div class="item">
-          Week of 1/4/2016
-          <div class="menu">
-            <a class="item">Monday 1/4/2016</a>
-            <a class="item">Tuesday 1/5/2016</a>
-            <a class="item">Wednesday 1/6/2016</a>
-            <a class="item">Thursday 1/7/2016</a>
-            <a class="item">Friday 1/8/2016</a>
-            <a class="item">Saturday 1/9/2016</a>
-            <a class="item">Sunday 1/10/2016</a>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </div>
     <div class="twelve wide column">
       <div class="ui container">
         {{#each dateData}}
-          <h1 class="ui header">{{this.date}}</h1>
+          <h1 class="ui header">{{formatDay this.date}}</h1>
           <div class="ui celled list">
             {{#each this.teeTimes}}
               <div class="item">
