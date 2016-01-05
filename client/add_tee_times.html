@@ -23,11 +23,35 @@
               <tr class="ui hidden message">
                 <td colspan="3">
                   <div class="ui form add-tee-time" data-timestamp="{{this.timestamp}}">
-                    <div class="three fields">
+                    <div class="three inline fields">
+                      <label>Time</label>
                       <div class="inline field">
-                        <label>Time</label>
-                        <input type="text" name="time-hour">
-                        <input type="text" name="time-minute">
+                        <select name="time-hour">
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7" selected>7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+                        <select name="time-minute">
+                          <option value="0" selected>00</option>
+                          <option value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="30">30</option>
+                          <option value="40">40</option>
+                          <option value="50">50</option>
+                        </select>
+                        <select name="time-period">
+                          <option value="am" selected>AM</option>
+                          <option value="pm">PM</option>
+                        </select>
                       </div>
                       <div class="inline field">
                         <label>Potential spots</label>
