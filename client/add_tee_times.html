@@ -1,40 +1,60 @@
 <template name="add_tee_times">
   <div class="ui container">
     <div class="ui segment">
-      <h2 class="header">Scheduled tee times</h2>
-      <table class="ui table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Potential spots</th>
-            <th>Reserved spots</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each scheduledTeeTimes}}
+      <h2 class="header">Schedule tee times</h2>
+      {{#each scheduledTeeTimes}}
+        <h3 class="header">Week of {{this.currentWeek}}</h3>
+        <table class="ui table">
+          <thead>
             <tr>
-              <td>{{this.date}}</td>
-              <td>{{this.time}}</td>
-              <td>{{this.potential_spots}}</td>
-              <td>{{this.reserved_spots}}</td>
+              <th>Time</th>
+              <th>Potential spots</th>
+              <th>Reserved spots</th>
             </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div class="ui form segment">
-      <h2 class="header">Add tee times</h2>
-      <div class="two fields">
-        <div class="field">
-          <label>Date</label>
-          <input type="date" name="date">
-        </div>
-        <div class="field">
-          <label>Time</label>
-          <input type="text" name="time">
-        </div>
-      </div>
+          </thead>
+          <tbody>
+            {{#each this.dateData}}
+              <tr>
+                <td colspan="3">
+                  {{formatDay this.date}}
+                  <i class="ui add square icon green link open-tee-time"></i>
+                </td>
+              </tr>
+              <tr class="ui hidden message">
+                <td colspan="3">
+                  <div class="ui form add-tee-time">
+                    <div class="three fields">
+                      <div class="inline field">
+                        <label>Time</label>
+                        <input type="text" name="time">
+                      </div>
+                      <div class="inline field">
+                        <label>Potential spots</label>
+                        <select name="spots">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4" selected>4</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <button type="submit" class="ui submit button">Add tee time</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {{#each this.teeTimes}}
+                <tr>
+                  <td>{{this.time}}</td>
+                  <td>{{this.potential_spots}}</td>
+                  <td>{{this.reserved_spots}}</td>
+                </tr>
+              {{/each}}
+            {{/each}}
+          </tbody>
+        </table>
+      {{/each}}
     </div>
   </div>
 </template>
