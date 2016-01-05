@@ -9,3 +9,15 @@ UI.registerHelper "formatTime", (context, options) ->
 UI.registerHelper "findLength", (context, options) ->
   if context
     context.length
+
+UI.registerHelper "playerData", (context, options) ->
+  if context
+    availableSpots = context.potentialSpots - context.reservedPlayers.length
+    data = []
+    for player in context.reservedPlayers
+      data.push
+        isReserved: true
+        player: player
+    for i in [0...availableSpots]
+      data.push
+        isReserved: false

@@ -5,7 +5,7 @@ Template.tee_times.helpers
     for date in dates
       result.push
         date: date
-        teeTimes: [1,2]
+        teeTimes: Helpers.getTeeTimes(date)
     result
 
   menuData: ->

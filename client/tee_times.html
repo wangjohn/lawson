@@ -22,7 +22,13 @@
             {{#each this.teeTimes}}
               <div class="item">
                 <div class="ui cards">
-                  {{> player_card}}
+                  {{#each playerData this}}
+                    {{#if this.isReserved}}
+                      {{> player_card this}}
+                    {{else}}
+                      <div class="ui card"></div>
+                    {{/if}}
+                  {{/each}}
                 </div>
               </div>
             {{/each}}
