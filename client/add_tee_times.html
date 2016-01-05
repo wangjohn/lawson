@@ -1,9 +1,39 @@
 <template name="add_tee_times">
   <div class="ui container">
+    <div class="ui segment">
+      <h2 class="header">Scheduled tee times</h2>
+      <table class="ui table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Potential spots</th>
+            <th>Reserved spots</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each scheduledTeeTimes}}
+            <tr>
+              <td>{{this.date}}</td>
+              <td>{{this.time}}</td>
+              <td>{{this.potential_spots}}</td>
+              <td>{{this.reserved_spots}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
     <div class="ui form segment">
-      <div class="field">
-        <label>Date</label>
-        <input type="text">
+      <h2 class="header">Add tee times</h2>
+      <div class="two fields">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" name="date">
+        </div>
+        <div class="field">
+          <label>Time</label>
+          <input type="text" name="time">
+        </div>
       </div>
     </div>
   </div>
