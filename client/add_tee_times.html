@@ -22,11 +22,12 @@
               </tr>
               <tr class="ui hidden message">
                 <td colspan="3">
-                  <div class="ui form add-tee-time">
+                  <div class="ui form add-tee-time" data-timestamp="{{this.timestamp}}">
                     <div class="three fields">
                       <div class="inline field">
                         <label>Time</label>
-                        <input type="text" name="time">
+                        <input type="text" name="time-hour">
+                        <input type="text" name="time-minute">
                       </div>
                       <div class="inline field">
                         <label>Potential spots</label>

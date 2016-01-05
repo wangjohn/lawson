@@ -20,6 +20,17 @@ Template.add_tee_times.events
   "click .add-tee-time .submit": (evt) ->
     evt.preventDefault()
     $form = $(evt.currentTarget).closest(".add-tee-time")
-    time = $form.find("input[name='time']").val()
-    spots = $form.find("select[name='spots']").val()
-    console.log(time, spots)
+    addTeeTime($form)
+
+addTeeTime = ($form) ->
+  dateTimestamp = parseInt($form.attr("data-timestamp"), 10)
+  timeHour = parseInt($form.find("input[name='time-hour']").val(), 10)
+  timeMinute = parseInt($form.find("input[name='time-minute']").val(), 10)
+  spots = parseInt($form.find("select[name='spots']").val(), 10)
+  date = moment(dateTimestamp).hour(timeHour).minute(timeMinute).second(0)
+  teeTimeData =
+    createdAt: new Date()
+    time: date.toDate()
+    potentialSpots: spots
+    reservedPlayers: []
+  TeeTimes.insert(teeTimeData)
