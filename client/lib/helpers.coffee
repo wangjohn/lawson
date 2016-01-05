@@ -33,6 +33,8 @@ class Helpers
     weeks
 
   getTeeTimes: (date) ->
-    []
+    dayStart = moment(date).hour(0).minute(0).second(0).millisecond(0)
+    dayEnd = moment(dayStart).add(1, 'days')
+    TeeTimes.find({time: {"$gte": dayStart.toDate(), "$lt": dayEnd.toDate()}})
 
 @Helpers = new Helpers()

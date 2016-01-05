@@ -71,9 +71,9 @@
               </tr>
               {{#each this.teeTimes}}
                 <tr>
-                  <td>{{this.time}}</td>
-                  <td>{{this.potential_spots}}</td>
-                  <td>{{this.reserved_spots}}</td>
+                  <td>{{formatTime this.time}}</td>
+                  <td>{{this.potentialSpots}}</td>
+                  <td>{{findLength this.reservedPlayers}}</td>
                 </tr>
               {{/each}}
             {{/each}}
