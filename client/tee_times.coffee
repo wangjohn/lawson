@@ -1,3 +1,6 @@
+Template.tee_times.rendered = ->
+  $(".tee-times .image").dimmer({on: "hover"})
+
 Template.tee_times.helpers
   dateData: ->
     dates = Helpers.getNextDays()

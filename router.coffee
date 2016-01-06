@@ -14,6 +14,10 @@ Router.route "/add_tee_times",
   yieldRegions:
     menu: {to: "menu"}
 
+Router.route "/settings", ->
+  @render "settings"
+  @render "menu", {to: "menu"}
+
 Router.route "/login",
   template: "login"
   onBeforeAction: ->

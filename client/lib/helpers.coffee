@@ -35,7 +35,7 @@ class Helpers
   getTeeTimes: (date) ->
     dayStart = moment(date).hour(0).minute(0).second(0).millisecond(0)
     dayEnd = moment(dayStart).add(1, 'days')
-    TeeTimes.find({time: {"$gte": dayStart.toDate(), "$lt": dayEnd.toDate()}})
+    TeeTimes.find({time: {"$gte": dayStart.toDate(), "$lt": dayEnd.toDate()}}, {sort: {time: 1}})
 
   getTeeTime: (date) ->
     TeeTimes.findOne({time: date})
