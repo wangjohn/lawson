@@ -1,5 +1,5 @@
-Template.tee_times.rendered = ->
-  $(".tee-times .image").dimmer({on: "hover"})
+Template.available_player_card.onRendered ->
+  @$(".image").dimmer({on: "hover"})
 
 Template.tee_times.helpers
   dateData: ->
