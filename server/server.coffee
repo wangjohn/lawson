@@ -1,4 +1,5 @@
-TeeTimes = new Mongo.Collection("tee_times")
-
 Meteor.publish "tee_times", ->
-  TeeTimes.find()
+  TeeTimes.find({time: {"$gte": new Date()}})
+
+Meteor.publish "user_details", ->
+  UserDetails.find()
