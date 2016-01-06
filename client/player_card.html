@@ -1,10 +1,22 @@
 <template name="player_card">
-  <div class="ui card">
+  <div class="ui red card">
     <div class="ui medium image">
       <img src="{{image_src}}">
     </div>
     <div class="content">
       <a class="header">{{name}}</a>
+    </div>
+  </div>
+</template>
+
+<template name="available_player_card">
+  <div class="ui card">
+    <div class="ui medium image">
+      <img src="/images/default_profile.png">
+    </div>
+    <div class="ui bottom attached button green open-book-tee-time">
+      <i class="add icon"></i>
+      Book tee time
     </div>
   </div>
 </template>

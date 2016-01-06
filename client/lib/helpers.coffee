@@ -37,4 +37,7 @@ class Helpers
     dayEnd = moment(dayStart).add(1, 'days')
     TeeTimes.find({time: {"$gte": dayStart.toDate(), "$lt": dayEnd.toDate()}})
 
+  getTeeTime: (date) ->
+    TeeTimes.findOne({time: date})
+
 @Helpers = new Helpers()

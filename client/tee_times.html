@@ -17,16 +17,17 @@
     <div class="twelve wide column">
       <div class="ui container">
         {{#each dateData}}
-          <h1 class="ui header">{{formatDay this.date}}</h1>
+          <h2 class="ui header">{{formatDay this.date}}</h2>
           <div class="ui celled list">
             {{#each this.teeTimes}}
-              <div class="item">
-                <div class="ui cards">
+              <div class="item" data-timestamp="{{formatTimestamp this.time}}">
+                <h3 class="ui header">{{formatTime this.time}}</h3>
+                <div class="ui four cards">
                   {{#each playerData this}}
                     {{#if this.isReserved}}
                       {{> player_card this}}
                     {{else}}
-                      <div class="ui card"></div>
+                      {{> available_player_card}}
                     {{/if}}
                   {{/each}}
                 </div>

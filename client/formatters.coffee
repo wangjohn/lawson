@@ -6,6 +6,10 @@ UI.registerHelper "formatTime", (context, options) ->
   if context
     moment(context).format("H:mm A")
 
+UI.registerHelper "formatTimestamp", (context, options) ->
+  if context
+    context.getTime()
+
 UI.registerHelper "findLength", (context, options) ->
   if context
     context.length
@@ -21,3 +25,4 @@ UI.registerHelper "playerData", (context, options) ->
     for i in [0...availableSpots]
       data.push
         isReserved: false
+    data

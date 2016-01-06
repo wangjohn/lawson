@@ -7,7 +7,6 @@ Template.add_tee_times.helpers
         teeTimes = Helpers.getTeeTimes(date)
         dateData.push
           date: date
-          timestamp: date.getTime()
           teeTimes: teeTimes
       week.dateData = dateData
     weekData
