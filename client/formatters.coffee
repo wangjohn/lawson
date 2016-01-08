@@ -4,7 +4,7 @@ UI.registerHelper "formatDay", (context, options) ->
 
 UI.registerHelper "formatTime", (context, options) ->
   if context
-    moment(context).format("H:mm A")
+    moment(context).format("h:mm A")
 
 UI.registerHelper "formatTimestamp", (context, options) ->
   if context

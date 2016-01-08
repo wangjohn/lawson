@@ -1,5 +1,22 @@
 <template name="settings">
   <div class="ui container">
-
+    <div class="ui form">
+      <div class="field">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="first-name" placeholder="First Name" value="{{settingsData.first_name}}">
+          </div>
+          <div class="field">
+            <input type="text" name="last-name" placeholder="Last Name" value="{{settingsData.last_name}}">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Profile picture</label>
+        <input type="file" name="file-upload">
+      </div>
+      <button class="ui submit button">Update Profile</button>
+    </div>
   </div>
 </template>

@@ -3,3 +3,7 @@ Meteor.publish "tee_times", ->
 
 Meteor.publish "user_details", ->
   UserDetails.find()
+
+Images.allow
+  insert: ->
+    true

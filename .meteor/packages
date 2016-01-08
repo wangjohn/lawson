@@ -24,3 +24,5 @@ flemay:less-autoprefixer
 semantic:ui-css
 iron:router
 momentjs:moment
+cfs:standard-packages
+cfs:filesystem
