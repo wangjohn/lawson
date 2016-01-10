@@ -40,4 +40,11 @@ class Helpers
   getTeeTime: (date) ->
     TeeTimes.findOne({time: date})
 
+  getUserDetails: (userId) ->
+    details = UserDetails.findOne({user_id: userId})
+    if details
+      details.profileImage = Images.findOne({_id: details.profileImageId})
+      console.log(details)
+      details
+
 @Helpers = new Helpers()

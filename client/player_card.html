@@ -1,12 +1,16 @@
 <template name="player_card">
   <div class="ui card">
     <div class="ui medium image">
-      <img src="{{this.image_src}}">
+      {{#with this.profileImage}}
+        <img src="{{this.url}}" >
+      {{/with}}
     </div>
     <div class="content">
-      <h4 class="ui header">{{this.name}}</h4>
+      <h4 class="ui header">{{this.firstName}} {{this.lastName}}</h4>
       <div class="meta">
-        <span class="meta-content">Member since 2014</span>
+        {{#if this.ghinNumber}}
+          <span class="meta-content">GHIN Number: {{this.ghinNumber}}</span>
+        {{/if}}
       </div>
     </div>
   </div>

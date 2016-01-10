@@ -21,8 +21,12 @@ UI.registerHelper "playerData", (context, options) ->
     for player in context.reservedPlayers
       data.push
         isReserved: true
-        player: player
+        player: Helpers.getUserDetails(player)
     for i in [0...availableSpots]
       data.push
         isReserved: false
     data
+
+UI.registerHelper "imageUrl", (context, options) ->
+  if context
+    Images.findOne({_id: context})?.url
