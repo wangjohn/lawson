@@ -1,29 +1,35 @@
 <template name="settings">
   <div class="ui container">
-    <div class="ui segment">
-      {{> player_card settingsData}}
-    </div>
-    <div class="ui form">
-      <div class="field">
-        <label>Name</label>
-        <div class="two fields">
-          <div class="field">
-            <input type="text" name="first-name" placeholder="First Name" value="{{settingsData.firstName}}">
-          </div>
-          <div class="field">
-            <input type="text" name="last-name" placeholder="Last Name" value="{{settingsData.lastName}}">
-          </div>
+    <div class="ui two column centered grid">
+      <div class="ui row">
+        <div class="column">
+          {{> player_card settingsData}}
         </div>
       </div>
-      <div class="field">
-        <label>GHIN Number</label>
-        <input type="text" name="ghin-number" placeholder="GHIN Number" value="{{settingsData.ghinNumber}}">
+      <div class="ui column">
+        <div class="ui segment form">
+          <div class="field">
+            <label>Name</label>
+            <div class="two fields">
+              <div class="field">
+                <input type="text" name="first-name" placeholder="First Name" value="{{settingsData.firstName}}">
+              </div>
+              <div class="field">
+                <input type="text" name="last-name" placeholder="Last Name" value="{{settingsData.lastName}}">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>GHIN Number</label>
+            <input type="text" name="ghin-number" placeholder="GHIN Number" value="{{settingsData.ghinNumber}}">
+          </div>
+          <div class="field">
+            <label>Profile picture</label>
+            <input type="file" name="file-upload">
+          </div>
+          <button class="ui submit button">Update Profile</button>
+        </div>
       </div>
-      <div class="field">
-        <label>Profile picture</label>
-        <input type="file" name="file-upload">
-      </div>
-      <button class="ui submit button">Update Profile</button>
     </div>
   </div>
 </template>

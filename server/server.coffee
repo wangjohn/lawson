@@ -9,10 +9,10 @@ Meteor.publish "images", ->
 
 Meteor.methods
   updateSettings: (userId, settingsObj) ->
-    userDetailsQuery =
-      $set:
-        firstName: settingsObj.firstName
-        lastName: settingsObj.lastName
-        ghinNumber: settingsObj.ghinNumber
-        profileImageId: settingsObj.profileImageId
-    UserDetails.update({user_id: userId}, userDetailsQuery)
+    setObj =
+      firstName: settingsObj.firstName
+      lastName: settingsObj.lastName
+      ghinNumber: settingsObj.ghinNumber
+    if settingsObj.profileImageId
+      setObj.profileImageId = settingsObj.profileImageId
+    UserDetails.update({user_id: userId}, {$set: setObj})
