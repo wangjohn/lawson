@@ -4,9 +4,8 @@ Meteor.publish "tee_times", ->
 Meteor.publish "user_details", ->
   UserDetails.find()
 
-Images.allow
-  insert: ->
-    true
+Meteor.publish "images", ->
+  Images.find()
 
 Meteor.methods
   updateSettings: (userId, settingsObj) ->
