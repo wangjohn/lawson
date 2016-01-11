@@ -23,6 +23,4 @@ Template.tee_times.events
 
 bookTeeTime = (timestamp, userId) ->
   teeTime = Helpers.getTeeTime(new Date(timestamp))
-  TeeTimes.update(teeTime._id, {
-    $push: {reservedPlayers: userId}
-  })
+  Meteor.call("bookTeeTime", Meteor.userId(), teeTime._id)

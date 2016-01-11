@@ -16,3 +16,13 @@ Meteor.methods
     if settingsObj.profileImageId
       setObj.profileImageId = settingsObj.profileImageId
     UserDetails.update({user_id: userId}, {$set: setObj})
+
+  bookTeeTime: (userId, teeTimeId) ->
+    teeTime = TeeTimes.findOne(teeTimeId)
+    if userId in teeTime.reservedPlayers
+      throw new Meteor.Error("already-reserved", "You have already reserved this tee time")
+    if teeTime.reservedPlayers.length >= teeTime.potentialSpots
+      throw new Meteor.Error("tee-tee-full", "This tee time is full")
+    TeeTimes.update(teeTimeId, {
+      $push: {reservedPlayers: userId}
+    })
