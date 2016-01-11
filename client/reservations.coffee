@@ -13,6 +13,5 @@ Template.reservations.helpers
       result.push
         date: new Date(parseInt(timestamp, 10))
         teeTimes: teeTimes
-    result.sort (a, b) ->
-      a.date.getTime() - b.date.getTime()
-    result
+    _.sortBy result, (a) ->
+      a.date.getTime()

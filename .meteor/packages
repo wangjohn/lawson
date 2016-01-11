@@ -26,3 +26,4 @@ iron:router
 momentjs:moment
 cfs:standard-packages
 cfs:filesystem
+underscore
