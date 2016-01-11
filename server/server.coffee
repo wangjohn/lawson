@@ -26,3 +26,11 @@ Meteor.methods
     TeeTimes.update(teeTimeId, {
       $push: {reservedPlayers: userId}
     })
+
+  cancelTeeTime: (userId, teeTimeId) ->
+    teeTime = TeeTimes.findOne(teeTimeId)
+    if userId not in teeTime.reservedPlayers
+      throw new Meteor.Error("not-reserved", "You cannot cancel this tee time since you haven't booked it")
+    TeeTimes.update(teeTimeId, {
+      $pull: {reservedPlayers: userId}
+    })

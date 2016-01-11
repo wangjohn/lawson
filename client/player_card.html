@@ -1,6 +1,13 @@
 <template name="player_card">
   <div class="ui centered card">
-    <div class="ui medium image">
+    <div class="ui medium blurring dimmable image">
+      <div class="ui dimmer transition hidden">
+        <div class="content">
+          <div class="center">
+            <div class="ui red inverted button open-cancel-tee-time">Cancel tee time</div>
+          </div>
+        </div>
+      </div>
       {{#with this.profileImage}}
         <img src="{{this.url}}" >
       {{/with}}
@@ -22,7 +29,7 @@
       <div class="ui dimmer transition hidden">
         <div class="content">
           <div class="center">
-            <div class="ui inverted button open-book-tee-time">Book tee time</div>
+            <div class="ui green inverted button open-book-tee-time">Book tee time</div>
           </div>
         </div>
       </div>
