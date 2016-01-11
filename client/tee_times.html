@@ -16,26 +16,30 @@
     </div>
     <div class="twelve wide column tee-times">
       <div class="ui container">
-        {{#each dateData}}
-          <h2 class="ui header">{{formatDay this.date}}</h2>
-          <div class="ui celled list">
-            {{#each this.teeTimes}}
-              <div class="item" data-timestamp="{{formatTimestamp this.time}}">
-                <h3 class="ui header">{{formatTime this.time}}</h3>
-                <div class="ui four cards">
-                  {{#each playerData this}}
-                    {{#if this.isReserved}}
-                      {{> player_card this}}
-                    {{else}}
-                      {{> available_player_card}}
-                    {{/if}}
-                  {{/each}}
-                </div>
-              </div>
-            {{/each}}
-          </div>
-        {{/each}}
+        {{> tee_time_list this.dateData}}
       </div>
     </div>
   </div>
+</template>
+
+<template name="tee_time_list">
+  {{#each this}}
+    <h2 class="ui header">{{formatDay this.date}}</h2>
+    <div class="ui celled list">
+      {{#each this.teeTimes}}
+        <div class="item" data-timestamp="{{formatTimestamp this.time}}">
+          <h3 class="ui header">{{formatTime this.time}}</h3>
+          <div class="ui four cards">
+            {{#each playerData this}}
+              {{#if this.isReserved}}
+                {{> player_card this.player}}
+              {{else}}
+                {{> available_player_card}}
+              {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
 </template>

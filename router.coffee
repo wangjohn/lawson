@@ -25,3 +25,8 @@ Router.route "/login",
       @redirect("/")
     else
       @next()
+
+Router.route "/reservations",
+  template: "reservations"
+  yieldRegions:
+    menu: {to: "menu"}

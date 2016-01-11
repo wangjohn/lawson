@@ -40,6 +40,9 @@ class Helpers
   getTeeTime: (date) ->
     TeeTimes.findOne({time: date})
 
+  getUserTeeTimes: (userId) ->
+    TeeTimes.find({reservedPlayers: {$in: [userId]}})
+
   getUserDetails: (userId) ->
     details = UserDetails.findOne({user_id: userId})
     if details
