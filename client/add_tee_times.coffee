@@ -32,9 +32,4 @@ addTeeTime = ($form) ->
     timeHour = 0
   spots = parseInt($form.find("select[name='spots']").val(), 10)
   date = moment(dateTimestamp).hour(timeHour).minute(timeMinute).second(0).millisecond(0)
-  teeTimeData =
-    createdAt: new Date()
-    time: date.toDate()
-    potentialSpots: spots
-    reservedPlayers: []
-  TeeTimes.insert(teeTimeData)
+  Meteor.call("createTeeTime", date.toDate(), spots)

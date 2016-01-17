@@ -1,0 +1,3 @@
+- Ensure that you can't add tee times on the same time
+- Add ability to delete tee times
+- GHIN number should get your handicap

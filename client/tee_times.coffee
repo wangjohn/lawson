@@ -7,9 +7,17 @@ Template.tee_times.onRendered ->
       day = matchedData[1]
       new ScrollMagic.Scene({triggerElement: "#tee-times-#{day}", triggerHook: 0})
         .setClassToggle("#menu-item-#{day}", "active")
+        .addIndicators()
         .addTo(controller)
-  # TODO: figure out the sticky menu.
-  $(".sticky.menu").sticky({context: "#tee-times-list"})
+
+  new ScrollMagic.Scene({triggerElement: "#tee-times-list", duration: 200, triggerHook: 0})
+    .addTo(controller)
+    .on("progress", (e) ->
+      if e.progress > 0
+        $("#tee-times-menu").addClass("sticky-fixed")
+      else
+        $("#tee-times-menu").removeClass("sticky-fixed")
+    )
 
 Template.available_player_card.onRendered ->
   @$(".image").dimmer({on: "hover"})

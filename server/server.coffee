@@ -34,3 +34,13 @@ Meteor.methods
     TeeTimes.update(teeTimeId, {
       $pull: {reservedPlayers: userId}
     })
+
+  createTeeTime: (time, potentialSpots) ->
+    TeeTimes.insert({
+      createdAt: new Date()
+      time: time
+      potentialSpots: potentialSpots
+      reservedPlayers: []
+    })
+
+
