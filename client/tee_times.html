@@ -7,14 +7,14 @@
             Week of {{this.currentWeek}}
             <div class="menu">
               {{#each this.dates}}
-                <a class="item">{{formatDay this}}</a>
+                <a id="menu-item-{{formatDate this}}" href="#tee-times-{{formatDate this}}" class="item">{{formatDay this}}</a>
               {{/each}}
             </div>
           </div>
         {{/each}}
       </div>
     </div>
-    <div class="twelve wide column tee-times">
+    <div class="twelve wide column tee-times" id="tee-times-list">
       <div class="ui container">
         {{> tee_time_list dateData}}
       </div>
@@ -24,7 +24,7 @@
 
 <template name="tee_time_list">
   {{#each this}}
-    <h2 class="ui header">{{formatDay this.date}}</h2>
+  <h2 class="ui header" id="tee-times-{{formatDate this.date}}">{{formatDay this.date}}</h2>
     <div class="ui celled list">
       {{#each this.teeTimes}}
         <div class="item" data-timestamp="{{formatTimestamp this.time}}">
