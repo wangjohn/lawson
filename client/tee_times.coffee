@@ -5,7 +5,6 @@ Template.tee_times.onRendered ->
     $("#tee-times-menu .menu .item").each (i, elem) ->
       dateData = $(elem).attr("id")
       matchedData = dateData.match(/menu-item-(.*)/)
-      console.log($(elem).height())
       if matchedData and matchedData.length >= 2
         day = matchedData[1]
         teeTimeSelector = "#tee-times-#{day}"
@@ -41,10 +40,7 @@ Template.available_player_card.events
 Template.player_card.events
   "click .open-cancel-tee-time": (evt) ->
     timestampStr = $(evt.currentTarget).closest(".item").attr("data-timestamp")
-    timestamp = parseInt(timestampStr, 10)
-    userId = Meteor.userId()
-    Helpers.openModal(".cancel-tee-time.modal")
-    #cancelTeeTime(timestamp, userId)
+    Helpers.openCancelTeeTimeModal(parseInt(timestampStr, 10), Meteor.userId())
 
 Template.tee_times.helpers
   dateData: ->

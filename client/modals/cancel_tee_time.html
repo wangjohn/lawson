@@ -1,20 +1,23 @@
 <template name="modal_cancel_tee_time">
   <div class="ui cancel-tee-time modal">
     <div class="ui icon header">
-      <i class="archive icon"></i>
-      Cancel Tee Time
+      <i class="remove user icon"></i>
+      <h1 class="ui header">
+        {{formatTime timestamp}}
+        <div class="sub header">{{formatDay timestamp}}</div>
+      </h1>
     </div>
     <div class="content">
-      <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+      <p>Are you sure you want to cancel your tee time?</p>
     </div>
     <div class="actions">
-      <div class="ui red cancel inverted button">
-        <i class="remove icon"></i>
-        No
-      </div>
-      <div class="ui green ok inverted button">
+      <div class="ui grey cancel button">
         <i class="checkmark icon"></i>
-        Yes
+        Nevermind
+      </div>
+      <div class="ui red ok inverted button">
+        <i class="remove icon"></i>
+        Cancel tee time
       </div>
     </div>
   </div>

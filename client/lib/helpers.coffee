@@ -9,9 +9,18 @@ getMonday = (date) ->
   new Date(date - 1000*60*60*24*diff)
 
 class Helpers
-  openModal: (selector) ->
-    $(selector)
+  openCancelTeeTimeModal: (timestamp, userId) ->
+    data =
+      timestamp: timestamp
+      userId: userId
+    Session.set("modal_cancel_tee_time_data", data)
+    $(".cancel-tee-time.modal")
       .modal("setting", "transition", "horizontal flip")
+      .modal({
+        onApprove: =>
+          teeTime = @getTeeTime(new Date(data.timestamp))
+          Meteor.call("cancelTeeTime", data.userId, teeTime._id)
+      })
       .modal("show")
 
   getNextDays: (date) ->
