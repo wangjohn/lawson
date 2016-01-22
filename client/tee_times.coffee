@@ -1,4 +1,9 @@
 Template.tee_times.rendered = ->
+  $("#tee-times-menu").visibility({
+    type: "fixed",
+    offset: 15,
+  })
+
   #TODO: figure out how to wait for the real height to come to the element
   setTimeout ->
     controller = new ScrollMagic.Controller({globalSceneOptions: {}})
@@ -12,15 +17,6 @@ Template.tee_times.rendered = ->
         new ScrollMagic.Scene({triggerElement: teeTimeSelector, triggerHook: 0, duration: height})
           .setClassToggle("#menu-item-#{day}", "active")
           .addTo(controller)
-
-    new ScrollMagic.Scene({triggerElement: "#tee-times-list", triggerHook: 0})
-      .addTo(controller)
-      .on("progress", (e) ->
-        if e.progress > 0
-          $("#tee-times-menu").addClass("sticky-fixed")
-        else
-          $("#tee-times-menu").removeClass("sticky-fixed")
-      )
   , 500
 
 Template.available_player_card.onRendered ->
