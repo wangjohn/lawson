@@ -8,9 +8,10 @@ Template.menu.helpers
     Helpers.getUserDetails(Meteor.userId())
   displayName: ->
     details = Helpers.getUserDetails(Meteor.userId())
-    "#{details.firstName} #{details.lastName}"
+    if details
+      "#{details.firstName} #{details.lastName}"
 
-Template.menu.onRendered ->
+Template.menu.rendered = ->
   $(".settings-dropdown").dropdown({
     on: 'hover'
   })

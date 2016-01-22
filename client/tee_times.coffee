@@ -1,4 +1,4 @@
-Template.tee_times.onRendered ->
+Template.tee_times.rendered = ->
   #TODO: figure out how to wait for the real height to come to the element
   setTimeout ->
     controller = new ScrollMagic.Controller({globalSceneOptions: {}})
@@ -11,7 +11,6 @@ Template.tee_times.onRendered ->
         height = $(teeTimeSelector).height()
         new ScrollMagic.Scene({triggerElement: teeTimeSelector, triggerHook: 0, duration: height})
           .setClassToggle("#menu-item-#{day}", "active")
-          .addIndicators()
           .addTo(controller)
 
     new ScrollMagic.Scene({triggerElement: "#tee-times-list", triggerHook: 0})
