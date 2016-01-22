@@ -2,5 +2,4 @@
 - Add ability to delete tee times
 - GHIN number should get your handicap
 - Create menu when you try to add tee time
-- Confirmation modal when you try to cancel a tee time
 - Handle ability to add guests
