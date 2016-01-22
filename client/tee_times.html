@@ -24,8 +24,9 @@
 
 <template name="tee_time_list">
   {{#each this}}
-  <h2 class="ui header">{{formatDay this.date}}</h2>
-    <div class="ui celled list" id="tee-times-{{formatDate this.date}}">
+  <div class="ui container date-container" id="tee-times-{{formatDate this.date}}">
+    <h2 class="ui header">{{formatDay this.date}}</h2>
+    <div class="ui celled list">
       {{#each this.teeTimes}}
         <div class="item" data-timestamp="{{formatTimestamp this.time}}">
           <h3 class="ui header">{{formatTime this.time}}</h3>
@@ -41,5 +42,7 @@
         </div>
       {{/each}}
     </div>
+  </div>
   {{/each}}
+  {{> modal_cancel_tee_time}}
 </template>

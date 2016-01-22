@@ -1,23 +1,29 @@
 Template.tee_times.onRendered ->
-  controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 100}})
-  @$(".menu a.item").each (i, elem) ->
-    dateData = $(elem).attr("id")
-    matchedData = dateData.match(/menu-item-(.*)/)
-    if matchedData and matchedData.length >= 2
-      day = matchedData[1]
-      new ScrollMagic.Scene({triggerElement: "#tee-times-#{day}", triggerHook: 0})
-        .setClassToggle("#menu-item-#{day}", "active")
-        .addIndicators()
-        .addTo(controller)
+  #TODO: figure out how to wait for the real height to come to the element
+  setTimeout ->
+    controller = new ScrollMagic.Controller({globalSceneOptions: {}})
+    $("#tee-times-menu .menu .item").each (i, elem) ->
+      dateData = $(elem).attr("id")
+      matchedData = dateData.match(/menu-item-(.*)/)
+      console.log($(elem).height())
+      if matchedData and matchedData.length >= 2
+        day = matchedData[1]
+        teeTimeSelector = "#tee-times-#{day}"
+        height = $(teeTimeSelector).height()
+        new ScrollMagic.Scene({triggerElement: teeTimeSelector, triggerHook: 0, duration: height})
+          .setClassToggle("#menu-item-#{day}", "active")
+          .addIndicators()
+          .addTo(controller)
 
-  new ScrollMagic.Scene({triggerElement: "#tee-times-list", duration: 200, triggerHook: 0})
-    .addTo(controller)
-    .on("progress", (e) ->
-      if e.progress > 0
-        $("#tee-times-menu").addClass("sticky-fixed")
-      else
-        $("#tee-times-menu").removeClass("sticky-fixed")
-    )
+    new ScrollMagic.Scene({triggerElement: "#tee-times-list", triggerHook: 0})
+      .addTo(controller)
+      .on("progress", (e) ->
+        if e.progress > 0
+          $("#tee-times-menu").addClass("sticky-fixed")
+        else
+          $("#tee-times-menu").removeClass("sticky-fixed")
+      )
+  , 500
 
 Template.available_player_card.onRendered ->
   @$(".image").dimmer({on: "hover"})
@@ -37,7 +43,8 @@ Template.player_card.events
     timestampStr = $(evt.currentTarget).closest(".item").attr("data-timestamp")
     timestamp = parseInt(timestampStr, 10)
     userId = Meteor.userId()
-    cancelTeeTime(timestamp, userId)
+    Helpers.openModal(".cancel-tee-time.modal")
+    #cancelTeeTime(timestamp, userId)
 
 Template.tee_times.helpers
   dateData: ->

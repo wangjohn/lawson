@@ -9,6 +9,11 @@ getMonday = (date) ->
   new Date(date - 1000*60*60*24*diff)
 
 class Helpers
+  openModal: (selector) ->
+    $(selector)
+      .modal("setting", "transition", "horizontal flip")
+      .modal("show")
+
   getNextDays: (date) ->
     date ||= new Date()
     result = [date]
