@@ -2,8 +2,8 @@ Router.configure
   layoutTemplate: "main_layout"
 
 Router.route "/", ->
+  @layout "home_layout"
   @render "home"
-  @render "menu", {to: "menu"}
 
 Router.route "/tee_times", ->
   @render "tee_times"
