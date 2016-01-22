@@ -13,18 +13,28 @@
         Book a time
       </a>
       <a class="item" href="/add_tee_times">
-        <i class="add square icon"></i>
+        <i class="large add square icon"></i>
         Add tee times
       </a>
     {{/if}}
     <div class="right menu">
       {{#if currentUser}}
-        <a class="item" href="/settings">
-          <i class="large settings icon"></i>
+        <a class="ui dropdown item settings-dropdown">
+          <span class="name">{{displayName}}</span>
+          {{#with userDetails}}
+            <img class="ui avatar image" src="{{this.profileImage.url}}">
+          {{/with}}
+          <div class="menu transition hidden" tabindex="-1">
+            <a class="item" href="/settings">
+              <i class="large settings icon"></i>
+              Settings
+            </a>
+            <a class="item" id="sign-out">
+              <i class="large sign out icon"></i>
+              Sign out
+            </a>
+          </div>
         </a>
-        <div class="item">
-          <a class="ui primary button" id="sign-out">Sign out</a>
-        </div>
       {{else}}
         <div class="item">
           <a class="ui primary button" href="/login">Sign in</a>

@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.settings-dropdown span.name {
+  margin-right: 10px;
+}
+
 .sticky-fixed {
   position: fixed;
   top: 10px;

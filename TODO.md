@@ -3,3 +3,4 @@
 - GHIN number should get your handicap
 - Create menu when you try to add tee time
 - Handle ability to add guests
+- Make settings menu dropdown larger
