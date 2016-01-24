@@ -34,3 +34,12 @@ UI.registerHelper "playerData", (context, options) ->
 UI.registerHelper "imageUrl", (context, options) ->
   if context
     Images.findOne({_id: context})?.url
+
+UI.registerHelper "availableSpots", (context, options) ->
+  if context
+    context.potentialSpots - context.reservedPlayers.length
+
+UI.registerHelper "range", (context, options) ->
+  if context
+    start = options?.hash?.start || 0
+    [start...context]

@@ -13,42 +13,6 @@
   margin-right: 10px;
 }
 
-a.sidebar-toggle.item {
-  cursor: pointer;
-}
-.full.height.image {
-  background-image: url("/images/stock_golf_course.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-}
-.ui.main.container {
-  min-height: 100vh;
-}
-.ui.information.container {
-  margin-top: 10%;
-  width: 50%;
-}
-.ui.information.container h1, .ui.information.container p {
-  text-align: center;
-}
-.menu.bar {
-  padding: 2em 0;
-}
-.full.height .ui.vertical.footer.segment {
-  bottom: 0;
-  position: relative;
-}
-.ui.information.container h1 {
-  color: white;
-  font-size: 5em;
-  font-style: bold;
-}
-.ui.information.container p {
-  color: #ccc;
-  font-size: 1.5em;
-}
-.ui.embed {
-  padding-bottom: 45%;
+.hidden-field {
+  display: none !important;
 }

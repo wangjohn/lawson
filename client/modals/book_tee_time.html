@@ -1,0 +1,50 @@
+<template name="modal_book_tee_time">
+  <div class="ui book-tee-time modal">
+    <div class="ui icon header">
+      <i class="add user icon"></i>
+      <h1 class="ui header">
+        Booking {{formatTime timestamp}}
+        <div class="sub header">{{formatDay timestamp}}</div>
+      </h1>
+    </div>
+    <div class="content">
+      <form class="ui form">
+        <div class="ui inline fields">
+          <div class="ui four wide field">
+            <div class="ui toggle checkbox">
+              <input type="checkbox" name="include-guests" class="hidden">
+              <label>Add guests</label>
+            </div>
+          </div>
+          <div class="ui twelve wide field hidden-field num-guests-field">
+            <div class="ui selection dropdown">
+              <input type="hidden" name="num-guests">
+              <i class="dropdown icon"></i>
+              <div class="default text">Number of guests</div>
+              <div class="menu">
+                {{#each (range (availableSpots teeTime) start=1)}}
+                  <div class="item" data-value="{{this}}">
+                    <span class="ui icon">{{this}}</span>
+                    {{#each (range this)}}
+                      <i class="ui icon user"></i>
+                    {{/each}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui grey cancel button">
+        <i class="remove icon"></i>
+        Nevermind
+      </div>
+      <div class="ui green ok button">
+        <i class="checkmark icon"></i>
+        Book tee time
+      </div>
+    </div>
+  </div>
+</template>

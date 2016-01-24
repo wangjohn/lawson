@@ -8,20 +8,31 @@ getMonday = (date) ->
     diff = (day + 1)
   new Date(date - 1000*60*60*24*diff)
 
+openModal = (selector, onApprove, opts = {}) ->
+  $(selector)
+    .modal("setting", "transition", opts.transition || "horizontal flip")
+    .modal({onApprove: onApprove})
+    .modal("show")
+
 class Helpers
-  openCancelTeeTimeModal: (timestamp, userId) ->
+  openBookTeeTimeModal: (timestamp) ->
     data =
       timestamp: timestamp
-      userId: userId
+      userId: Meteor.userId()
+    Session.set("modal_book_tee_time_data", data)
+    onApprove = =>
+      console.log("BOOKing tee time")
+    openModal(".book-tee-time.modal", onApprove)
+
+  openCancelTeeTimeModal: (timestamp) ->
+    data =
+      timestamp: timestamp
+      userId: Meteor.userId()
     Session.set("modal_cancel_tee_time_data", data)
-    $(".cancel-tee-time.modal")
-      .modal("setting", "transition", "horizontal flip")
-      .modal({
-        onApprove: =>
-          teeTime = @getTeeTime(new Date(data.timestamp))
-          Meteor.call("cancelTeeTime", data.userId, teeTime._id)
-      })
-      .modal("show")
+    onApprove = =>
+      teeTime = @getTeeTime(new Date(data.timestamp))
+      Meteor.call("cancelTeeTime", data.userId, teeTime._id)
+    openModal(".book-tee-time.modal", onApprove)
 
   getNextDays: (date) ->
     date ||= new Date()
