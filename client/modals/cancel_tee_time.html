@@ -9,6 +9,9 @@
     </div>
     <div class="content">
       <p>Are you sure you want to cancel your tee time?</p>
+      {{#if hasGuests}}
+        <p>Doing so will cancel the tee time for all of your guests as well.</p>
+      {{/if}}
     </div>
     <div class="actions">
       <div class="ui grey cancel button">

@@ -25,7 +25,8 @@ UI.registerHelper "playerData", (context, options) ->
     for player in context.reservedPlayers
       data.push
         isReserved: true
-        player: Helpers.getUserDetails(player)
+        isGuest: player.is_guest
+        player: Helpers.getUserDetails(player.user_id)
     for i in [0...availableSpots]
       data.push
         isReserved: false

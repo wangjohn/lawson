@@ -28,18 +28,7 @@
     <h2 class="ui header">{{formatDay this.date}}</h2>
     <div class="ui celled list">
       {{#each this.teeTimes}}
-        <div class="item" data-timestamp="{{formatTimestamp this.time}}">
-          <h3 class="ui header">{{formatTime this.time}}</h3>
-          <div class="ui four cards">
-            {{#each playerData this}}
-              {{#if this.isReserved}}
-                {{> player_card this.player}}
-              {{else}}
-                {{> available_player_card}}
-              {{/if}}
-            {{/each}}
-          </div>
-        </div>
+        {{> tee_time this}}
       {{/each}}
     </div>
   </div>

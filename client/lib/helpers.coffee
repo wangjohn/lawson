@@ -15,13 +15,19 @@ openModal = (selector, onApprove, opts = {}) ->
     .modal("show")
 
 class Helpers
-  openBookTeeTimeModal: (timestamp) ->
+  openBookTeeTimeModal: (timestamp) =>
     data =
       timestamp: timestamp
       userId: Meteor.userId()
     Session.set("modal_book_tee_time_data", data)
     onApprove = =>
-      console.log("BOOKing tee time")
+      teeTime = @getTeeTime(new Date(timestamp))
+      bookingValues = $("form.booking-form").form("get values")
+      if bookingValues["include-guests"]
+        numGuests = parseInt(bookingValues["num-guests"], 10)
+      else
+        numGuests = 0
+      Meteor.call("bookTeeTime", data.userId, teeTime._id, numGuests)
     openModal(".book-tee-time.modal", onApprove)
 
   openCancelTeeTimeModal: (timestamp) ->
@@ -32,7 +38,7 @@ class Helpers
     onApprove = =>
       teeTime = @getTeeTime(new Date(data.timestamp))
       Meteor.call("cancelTeeTime", data.userId, teeTime._id)
-    openModal(".book-tee-time.modal", onApprove)
+    openModal(".cancel-tee-time.modal", onApprove)
 
   getNextDays: (date) ->
     date ||= new Date()
@@ -66,7 +72,7 @@ class Helpers
     TeeTimes.findOne({time: date})
 
   getUserTeeTimes: (userId) ->
-    TeeTimes.find({reservedPlayers: {$in: [userId]}})
+    TeeTimes.find({"reservedPlayers.user_id": userId})
 
   getUserDetails: (userId) ->
     details = UserDetails.findOne({user_id: userId})
