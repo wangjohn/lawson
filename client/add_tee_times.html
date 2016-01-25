@@ -10,18 +10,20 @@
               <th>Time</th>
               <th>Potential spots</th>
               <th>Reserved spots</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {{#each this.dateData}}
               <tr>
-                <td colspan="3">
+                <td colspan="4">
                   {{formatDay this.date}}
                   <i class="ui add square icon green link open-tee-time"></i>
+                  <i class="ui minus square icon green link close-tee-time hidden-field"></i>
                 </td>
               </tr>
               <tr class="ui hidden message">
-                <td colspan="3">
+                <td colspan="4">
                   <div class="ui form add-tee-time" data-timestamp="{{formatTimestamp this.date}}">
                     <div class="three inline fields">
                       <label>Time</label>
@@ -63,17 +65,23 @@
                         </select>
                       </div>
                       <div class="field">
-                        <button type="submit" class="ui submit button">Add tee time</button>
+                        <button type="submit" class="ui submit button">
+                          <i class="icon plus"></i>
+                          Add tee time
+                        </button>
                       </div>
                     </div>
                   </div>
                 </td>
               </tr>
               {{#each this.teeTimes}}
-                <tr>
+                <tr data-id="{{this._id}}">
                   <td>{{formatTime this.time}}</td>
                   <td>{{this.potentialSpots}}</td>
                   <td>{{findLength this.reservedPlayers}}</td>
+                  <td>
+                    <i class="icon remove link remove-tee-time"></i>
+                  </td>
                 </tr>
               {{/each}}
             {{/each}}

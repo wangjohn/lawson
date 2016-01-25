@@ -43,6 +43,9 @@ Meteor.methods
     })
 
   createTeeTime: (time, potentialSpots) ->
+    prevTime = TeeTimes.findOne({time: time})
+    if prevTime
+      throw new Meteor.Error("already-created", "You cannot create this tee time since there is already one at that time")
     TeeTimes.insert({
       createdAt: new Date()
       time: time
@@ -50,4 +53,5 @@ Meteor.methods
       reservedPlayers: []
     })
 
-
+  removeTeeTime: (id) ->
+    TeeTimes.remove({_id: id})

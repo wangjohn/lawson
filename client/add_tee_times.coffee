@@ -13,13 +13,28 @@ Template.add_tee_times.helpers
 
 Template.add_tee_times.events
   "click .open-tee-time": (evt) ->
+    toggleTeeIcons(evt.currentTarget)
     $hiddenMessage = $(evt.currentTarget).closest("tr").next()
-    $hiddenMessage.toggleClass("hidden")
+    $hiddenMessage.removeClass("hidden")
+
+  "click .close-tee-time": (evt) ->
+    toggleTeeIcons(evt.currentTarget)
+    $hiddenMessage = $(evt.currentTarget).closest("tr").next()
+    $hiddenMessage.addClass("hidden")
 
   "click .add-tee-time .submit": (evt) ->
     evt.preventDefault()
     $form = $(evt.currentTarget).closest(".add-tee-time")
     addTeeTime($form)
+
+  "click .remove-tee-time": (evt) ->
+    teeTimeId = $(evt.currentTarget).closest("tr").attr("data-id")
+    Meteor.call("removeTeeTime", teeTimeId)
+
+toggleTeeIcons = (target) ->
+  $tr = $(target).closest("tr")
+  $tr.find(".open-tee-time").toggleClass("hidden-field")
+  $tr.find(".close-tee-time").toggleClass("hidden-field")
 
 addTeeTime = ($form) ->
   dateTimestamp = parseInt($form.attr("data-timestamp"), 10)
