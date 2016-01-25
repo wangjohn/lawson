@@ -1,5 +1,6 @@
 TODO
 
+- Create card for guests.
 - Don't show cancel tee time on the player card in the settings page
 - Fix bug where multiple modals pop up after you exit one
 - Make settings menu dropdown larger
