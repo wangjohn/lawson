@@ -1,6 +1,6 @@
 TODO
 
-- Ensure that you can't add tee times on the same time
+- Ensure that admins can't add tee times at the same time
 - Add ability to delete tee times
 - GHIN number should get your handicap
 - Make settings menu dropdown larger
@@ -12,3 +12,4 @@ DONE
 
 - Create menu when you try to add tee time
 - Handle ability to add guests
+- Ensure that you can't add tee times on the same time

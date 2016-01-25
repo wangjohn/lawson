@@ -6,7 +6,11 @@
         {{#if this.isReserved}}
           {{> player_card this.player}}
         {{else}}
-          {{> available_player_card}}
+          {{#if canBook}}
+            {{> available_player_card}}
+          {{else}}
+            {{> unbookable_available_player_card}}
+          {{/if}}
         {{/if}}
       {{/each}}
     </div>

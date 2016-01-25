@@ -22,7 +22,9 @@ UI.registerHelper "playerData", (context, options) ->
   if context
     availableSpots = context.potentialSpots - context.reservedPlayers.length
     data = []
+    canBook = true
     for player in context.reservedPlayers
+      canBook = false if player.user_id == Meteor.userId()
       data.push
         isReserved: true
         isGuest: player.is_guest
@@ -30,6 +32,7 @@ UI.registerHelper "playerData", (context, options) ->
     for i in [0...availableSpots]
       data.push
         isReserved: false
+        canBook: canBook
     data
 
 UI.registerHelper "imageUrl", (context, options) ->
