@@ -9,8 +9,9 @@
               Welcome to the PGCC
             </h1>
             <p class="landing-quote">
-            "It's impossible to outplay an opponent you can't outthink."<br />
-              &mdash;Lawson Little
+              {{#with quote}}
+                {{this.quote}}<br />&mdash;{{this.author}}
+              {{/with}}
             </p>
           </div>
         </div>
