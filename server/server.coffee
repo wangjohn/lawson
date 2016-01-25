@@ -12,6 +12,7 @@ Meteor.methods
     setObj =
       firstName: settingsObj.firstName
       lastName: settingsObj.lastName
+      yearJoined: parseInt(settingsObj.yearJoined, 10) || null
       ghinNumber: settingsObj.ghinNumber
     if settingsObj.profileImageId
       setObj.profileImageId = settingsObj.profileImageId

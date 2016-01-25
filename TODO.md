@@ -4,6 +4,7 @@ TODO
 - GHIN number should get your handicap
 - Make settings menu dropdown larger
 - Make sure there is a concept of admins, only they can add tee times
+- Better styling for tee times and player cards
 
 DONE
 

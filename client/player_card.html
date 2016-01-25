@@ -15,10 +15,16 @@
     <div class="content">
       <h4 class="ui header">{{this.firstName}} {{this.lastName}}</h4>
       <div class="meta">
-        {{#if this.ghinNumber}}
-          <span class="meta-content">GHIN Number: {{this.ghinNumber}}</span>
+        {{#if this.yearJoined}}
+          <span class="meta-content">Joined {{this.yearJoined}}</span>
         {{/if}}
       </div>
+    </div>
+    <div class="extra content">
+      <span>
+        <i class="user icon"></i>
+        5 Handicap
+      </span>
     </div>
   </div>
 </template>

@@ -9,6 +9,7 @@ Template.settings.events
     settingsObj =
       firstName: $form.find("input[name='first-name']").val()
       lastName: $form.find("input[name='last-name']").val()
+      yearJoined: $form.find("input[name='year-joined']").val()
       ghinNumber: $form.find("input[name='ghin-number']").val()
 
     profileFile = getFileFromInput($form.find("input[name='file-upload']"))
