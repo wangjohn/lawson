@@ -1,3 +1,35 @@
+cheerio = Meteor.npmRequire("cheerio")
+
+WIDGET_URL = "http://widgets.ghin.com/HandicapLookupResults.aspx"
+
+class HandicapRetriever
+  constructor: ->
+    @widgetQueryParams =
+      entry: 1
+      css: "default"
+      dynamic: ""
+      small: 0
+      mode: ""
+      tab: 0
+
+  retrieve: (ghinNumber) =>
+    queryParams = _.extend(@widgetQueryParams, {ghinno: ghinNumber})
+    opts =
+      params: queryParams
+      headers:
+        "Upgrade-Insecure-Requests": 1
+    widgetResult = HTTP.call("GET", WIDGET_URL, opts)
+    handicap = @parseHTML(widgetResult.content)
+    if handicap
+      parseFloat(handicap, 10)
+
+  parseHTML: (html) ->
+    $ = cheerio.load(html)
+    $('.ClubGridHandicapIndex').text()
+
+getHandicap = (ghinNumber) ->
+  new HandicapRetriever().retrieve(ghinNumber)
+
 Meteor.publish "tee_times", ->
   TeeTimes.find({time: {"$gte": new Date()}})
 
@@ -14,6 +46,9 @@ Meteor.methods
       lastName: settingsObj.lastName
       yearJoined: parseInt(settingsObj.yearJoined, 10) || null
       ghinNumber: settingsObj.ghinNumber
+    if settingsObj.ghinNumber
+      handicap = getHandicap(settingsObj.ghinNumber)
+      setObj["handicap"] = handicap
     if settingsObj.profileImageId
       setObj.profileImageId = settingsObj.profileImageId
     UserDetails.update({user_id: userId}, {$set: setObj})

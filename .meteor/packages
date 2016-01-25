@@ -26,3 +26,8 @@ momentjs:moment
 cfs:standard-packages
 cfs:filesystem
 underscore
+http
+meteorhacks:npm
+
+
+npm-container

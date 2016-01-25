@@ -20,12 +20,14 @@
         {{/if}}
       </div>
     </div>
-    <div class="extra content">
-      <span>
-        <i class="user icon"></i>
-        5 Handicap
-      </span>
-    </div>
+    {{#if this.handicap}}
+      <div class="extra content">
+        <span>
+          <i class="user icon"></i>
+          {{this.handicap}} Handicap
+        </span>
+      </div>
+    {{/if}}
   </div>
 </template>
 
