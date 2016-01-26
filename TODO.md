@@ -7,11 +7,12 @@ TODO
 - Create card for guests.
 - Fix bug where multiple modals pop up after you exit one
 - Make settings menu dropdown larger
-- Make sure there is a concept of admins, only they can add tee times
 - Better styling for tee times and player cards
+- Admins should be able to add anyone to a tee time
 
 DONE
 
+- Make sure there is a concept of admins, only they can add tee times
 - Don't show cancel tee time on the player card in the settings page
 - GHIN number should get your handicap
 - Finish design of the landing page
