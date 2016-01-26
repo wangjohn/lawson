@@ -14,10 +14,12 @@
         <i class="large ticket icon"></i>
         Book a time
       </a>
-      <a class="item" href="/add_tee_times">
-        <i class="large add square icon"></i>
-        Add tee times
-      </a>
+      {{#if isInRole 'admin'}}
+        <a class="item" href="/add_tee_times">
+          <i class="large add square icon"></i>
+          Add tee times
+        </a>
+      {{/if}}
     {{/if}}
     <div class="right menu">
       {{#if currentUser}}

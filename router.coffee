@@ -30,3 +30,20 @@ Router.route "/reservations",
   template: "reservations"
   yieldRegions:
     menu: {to: "menu"}
+
+authenticateUser = ->
+  user = Meteor.userId()
+  if not user
+    @redirect("/")
+  else
+    @next()
+
+authenticateAdmin = ->
+  user = Meteor.userId()
+  if Roles.userIsInRole(user, 'admin')
+    @next()
+  else
+    @redirect("/")
+
+Router.onBeforeAction(authenticateUser, {only: ['tee_times', 'add_tee_times', 'settings', 'reservations']})
+Router.onBeforeAction(authenticateAdmin, {only: ['add_tee_times']})

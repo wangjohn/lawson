@@ -79,6 +79,11 @@ Meteor.methods
     })
 
   createTeeTime: (time, potentialSpots) ->
+    user = Meteor.userId()
+    if not user
+      throw new Meteor.Error("no-user", "Cannot perform this action without a user")
+    if not Roles.userIsInRole(user, ['admin'])
+      throw new Meteor.Error("access-denied", "You do not have permission to perform that action")
     prevTime = TeeTimes.findOne({time: time})
     if prevTime
       throw new Meteor.Error("already-created", "You cannot create this tee time since there is already one at that time")
@@ -90,4 +95,9 @@ Meteor.methods
     })
 
   removeTeeTime: (id) ->
+    user = Meteor.userId()
+    if not user
+      throw new Meteor.Error("no-user", "Cannot perform this action without a user")
+    if not Roles.userIsInRole(user, ['admin'])
+      throw new Meteor.Error("access-denied", "You do not have permission to perform that action")
     TeeTimes.remove({_id: id})
