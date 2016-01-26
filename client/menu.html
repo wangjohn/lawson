@@ -21,22 +21,7 @@
     {{/if}}
     <div class="right menu">
       {{#if currentUser}}
-        <a class="ui dropdown item settings-dropdown">
-          <span class="name">{{displayName}}</span>
-          {{#with userDetails}}
-            <img class="ui avatar image" src="{{this.profileImage.url}}">
-          {{/with}}
-          <div class="menu transition hidden" tabindex="-1">
-            <a class="item" href="/settings">
-              <i class="large settings icon"></i>
-              Settings
-            </a>
-            <a class="item" id="sign-out">
-              <i class="large sign out icon"></i>
-              Sign out
-            </a>
-          </div>
-        </a>
+        {{> menu_settings_dropdown}}
       {{else}}
         <div class="item">
           <a class="ui primary button" href="/login">Sign in</a>
@@ -44,4 +29,23 @@
       {{/if}}
     </div>
   </div>
+</template>
+
+<template name="menu_settings_dropdown">
+  <a class="ui dropdown item settings-dropdown">
+    <span class="name">{{displayName}}</span>
+    {{#with userDetails}}
+      <img class="ui avatar image" src="{{this.profileImage.url}}">
+    {{/with}}
+    <div class="menu transition hidden" tabindex="-1">
+      <a class="item" href="/settings">
+        <i class="large settings icon"></i>
+        Settings
+      </a>
+      <a class="item" id="sign-out">
+        <i class="large sign out icon"></i>
+        Sign out
+      </a>
+    </div>
+  </a>
 </template>

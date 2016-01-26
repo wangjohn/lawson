@@ -5,7 +5,6 @@ TODO
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
 - Do something for the case when there are no tee times available
 - Create card for guests.
-- Don't show cancel tee time on the player card in the settings page
 - Fix bug where multiple modals pop up after you exit one
 - Make settings menu dropdown larger
 - Make sure there is a concept of admins, only they can add tee times
@@ -13,6 +12,7 @@ TODO
 
 DONE
 
+- Don't show cancel tee time on the player card in the settings page
 - GHIN number should get your handicap
 - Finish design of the landing page
 - Add menu to the landing page

@@ -3,7 +3,7 @@ Template.menu.events
     Meteor.logout ->
       Router.go("/")
 
-Template.menu.helpers
+Template.menu_settings_dropdown.helpers
   userDetails: ->
     Helpers.getUserDetails(Meteor.userId())
   displayName: ->
@@ -11,7 +11,7 @@ Template.menu.helpers
     if details
       "#{details.firstName} #{details.lastName}"
 
-Template.menu.onRendered ->
-  $(".settings-dropdown").dropdown({
+Template.menu_settings_dropdown.onRendered ->
+  @$(".settings-dropdown").dropdown({
     on: 'hover'
   })
