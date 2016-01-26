@@ -7,9 +7,41 @@ Template.modal_book_tee_time.helpers
     if data.timestamp
       Helpers.getTeeTime(new Date(data.timestamp))
 
+Template.modal_book_tee_time_golfers.helpers
+  showGolfers: ->
+    Session.get("modal_book_tee_time_include_golfers")
+  numGolfers: ->
+    Session.get("modal_book_tee_time_num_golfers") || 0
+
+Template.modal_book_tee_time_golfer.helpers
+  golferNumber: (index) ->
+    index + 1
+
 Template.modal_book_tee_time.rendered = ->
-  @$(".ui.checkbox").checkbox({
+  Session.set("modal_book_tee_time_include_golfers", false)
+  Session.set("modal_book_tee_time_num_golfers", 0)
+  @$(".ui.checkbox.include-golfers").checkbox({
     onChange: =>
-      $(".num-guests-field").toggleClass("hidden-field")
+      isChecked = $(".ui.checkbox.include-golferss").checkbox("is checked")
+      Session.set("modal_book_tee_time_include_golfers", isChecked)
+      $(".num-golfers-field").toggleClass("hidden-field")
   })
+  @$(".ui.dropdown.num-golfers").dropdown({
+    onChange: (val, text, $elem) =>
+      numGolfers = parseInt(val, 10)
+      Session.set("modal_book_tee_time_num_golfers", numGolfers)
+  })
+
+Template.modal_book_tee_time_member.rendered = ->
   @$(".ui.dropdown").dropdown()
+
+Template.modal_book_tee_time_member.helpers
+  memberDetails: ->
+    UserDetails.find()
+
+Template.modal_book_tee_time_golfer.rendered = ->
+  @$(".ui.checkbox.is-member").checkbox({
+    onChange: =>
+      @$(".add-member").toggleClass("hidden-field")
+      @$(".add-guest").toggleClass("hidden-field")
+  })

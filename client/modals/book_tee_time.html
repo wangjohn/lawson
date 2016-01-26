@@ -11,16 +11,16 @@
       <form class="ui form booking-form">
         <div class="ui inline fields">
           <div class="ui four wide field">
-            <div class="ui toggle checkbox">
-              <input type="checkbox" name="include-guests" class="hidden">
-              <label>Add guests</label>
+            <div class="ui toggle checkbox include-golfers">
+              <input type="checkbox" name="include-golfers" class="hidden">
+              <label>Add golfers</label>
             </div>
           </div>
-          <div class="ui twelve wide field hidden-field num-guests-field">
-            <div class="ui selection dropdown">
-              <input type="hidden" name="num-guests">
+          <div class="ui twelve wide field hidden-field num-golfers-field">
+            <div class="ui selection dropdown num-golfers">
+              <input type="hidden" name="num-golfers">
               <i class="dropdown icon"></i>
-              <div class="default text">Number of guests</div>
+              <div class="default text">Number of golfers</div>
               <div class="menu">
                 {{#each (range (availableSpots teeTime) start=1)}}
                   <div class="item" data-value="{{this}}">
@@ -34,6 +34,7 @@
             </div>
           </div>
         </div>
+        {{> modal_book_tee_time_golfers}}
       </form>
     </div>
     <div class="actions">
@@ -44,6 +45,62 @@
       <div class="ui green ok button">
         <i class="checkmark icon"></i>
         Book tee time
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="modal_book_tee_time_golfers">
+  {{#if showGolfers}}
+    {{#each range numGolfers}}
+      <div class="ui inline fields">
+        {{> modal_book_tee_time_golfer this}}
+      </div>
+    {{/each}}
+  {{/if}}
+</template>
+
+<template name="modal_book_tee_time_golfer">
+  <div class="ui two wide field">
+    <label>Golfer {{golferNumber this}}</label>
+  </div>
+  <div class="ui four wide field">
+    <div class="ui checkbox is-member">
+      <input type="checkbox" name="is-member" class="hidden" checked="checked">
+      <label>PGCC member</label>
+    </div>
+  </div>
+  <div class="ui ten wide field add-member">
+    {{> modal_book_tee_time_member}}
+  </div>
+  <div class="ui ten wide field hidden-field add-guest">
+    <div class="ui left icon input">
+      <i class="user icon"></i>
+      <input type="text" name="guest-name" placeholder="Name of guest">
+    </div>
+  </div>
+</template>
+
+<template name="modal_book_tee_time_member">
+  <div class="ui fluid floating dropdown labeled icon button">
+    <i class="filter icon"></i>
+    <span class="text">Select member</span>
+    <div class="menu transition hidden" tabindex="-1">
+      <div class="ui icon search input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search members..." tabindex="0">
+      </div>
+      <div class="divider"></div>
+      <div class="header">
+        <i class="tags icon"></i>
+        Member name
+      </div>
+      <div class="scrolling menu">
+        {{#each memberDetails}}
+          <div class="item" data-value="{{this.user_id}}">
+            {{this.firstName}} {{this.lastName}}
+          </div>
+        {{/each}}
       </div>
     </div>
   </div>
