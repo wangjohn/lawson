@@ -1,6 +1,6 @@
 <template name="tee_times">
   <div class="ui stackable grid">
-    <div class="four wide column">
+    <div class="three wide column">
       <div class="ui vertical menu" id="tee-times-menu">
         {{#each menuData}}
           <div class="item">
@@ -14,7 +14,7 @@
         {{/each}}
       </div>
     </div>
-    <div class="twelve wide column tee-times" id="tee-times-list">
+    <div class="thirteen wide column tee-times" id="tee-times-list">
       <div class="ui container">
         {{> tee_time_list dateData}}
       </div>
@@ -24,13 +24,18 @@
 
 <template name="tee_time_list">
   {{#each this}}
-  <div class="ui container date-container" id="tee-times-{{formatDate this.date}}">
-    <h2 class="ui header">{{formatDay this.date}}</h2>
-    <div class="ui celled list">
-      {{#each this.teeTimes}}
-        {{> tee_time this}}
-      {{/each}}
-    </div>
+  <div class="ui container segment date-container" id="tee-times-{{formatDate this.date}}">
+    <h2 class="ui dividing header">{{formatDay this.date}}</h2>
+    {{#if findLength this.teeTimes}}
+      <div class="ui list">
+        {{#each this.teeTimes}}
+          {{> tee_time this}}
+        {{/each}}
+      </div>
+    {{else}}
+      <i class="folder open outline icon"></i>
+      No times available
+    {{/if}}
   </div>
   {{/each}}
   {{> modal_cancel_tee_time}}

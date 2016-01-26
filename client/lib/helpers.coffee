@@ -3,9 +3,9 @@ FUTURE_DAYS_AVAILABLE = 14
 getMonday = (date) ->
   day = date.getDay()
   if day == 0
-    diff = 8
+    diff = 6
   else
-    diff = (day + 1)
+    diff = (day - 1)
   new Date(date - 1000*60*60*24*diff)
 
 openModal = (selector, onApprove, opts = {}) ->

@@ -16,7 +16,7 @@ UI.registerHelper "formatTimestamp", (context, options) ->
 
 UI.registerHelper "findLength", (context, options) ->
   if context
-    context.length
+    context.length || context.count()
 
 UI.registerHelper "playerData", (context, options) ->
   if context
