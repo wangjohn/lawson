@@ -23,7 +23,7 @@ Template.available_player_card.onRendered ->
   @$(".image").dimmer({on: "hover"})
 
 Template.player_card.onRendered ->
-  @$(".image").dimmer({on: "hover"})
+  @$(".image.dimmable").dimmer({on: "hover"})
 
 Template.available_player_card.events
   "click .open-book-tee-time": (evt) ->

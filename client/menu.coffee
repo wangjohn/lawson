@@ -11,7 +11,7 @@ Template.menu.helpers
     if details
       "#{details.firstName} #{details.lastName}"
 
-Template.menu.rendered = ->
+Template.menu.onRendered ->
   $(".settings-dropdown").dropdown({
     on: 'hover'
   })

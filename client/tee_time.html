@@ -4,7 +4,7 @@
     <div class="ui four cards">
       {{#each playerData this}}
         {{#if this.isReserved}}
-          {{> player_card this.player}}
+          {{> player_card data=this.player show_cancel=true}}
         {{else}}
           {{#if canBook}}
             {{> available_player_card}}
