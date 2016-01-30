@@ -1,6 +1,6 @@
 Template.signup.helpers
   loading: ->
-    Session.set("signup_loading")
+    Session.get("signup_loading")
 
 Template.signup.rendered = ->
   Session.set("signup_loading", false)
@@ -28,3 +28,4 @@ Template.signup.events
     Session.set("signup_loading", true)
     Meteor.call "createAccount", accountData, (err) ->
       Session.set("signup_loading", false)
+      Router.go("/")
