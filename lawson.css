@@ -5,6 +5,11 @@
   margin-top: 50px;
 }
 
+.column.signup-column {
+  max-width: 550px;
+  margin-top: 50px;
+}
+
 .column.login-column .form .ui.input {
   width: 100%;
 }

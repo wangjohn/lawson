@@ -18,6 +18,9 @@ Router.route "/settings", ->
   @render "settings"
   @render "menu", {to: "menu"}
 
+Router.route "/signup",
+  template: "signup"
+
 Router.route "/login",
   template: "login"
   onBeforeAction: ->

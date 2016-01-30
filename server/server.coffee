@@ -40,6 +40,20 @@ Meteor.publish "images", ->
   Images.find()
 
 Meteor.methods
+  createAccount: (accountData) ->
+    accountOptions =
+      email: accountData.email
+      password: accountData.password
+    userId = Accounts.createUser(accountOptions)
+    userDetailsData =
+      userId: userId
+      firstName: accountData.firstName
+      lastName: accountData.lastName
+      yearJoined: accountData.yearJoined
+      ghinNumber: accountData.ghinNumber
+    UserDetails.insert(userDetailsData)
+    Accounts.sendVerificationEmail(userId)
+
   updateSettings: (userId, settingsObj) ->
     setObj =
       firstName: settingsObj.firstName
