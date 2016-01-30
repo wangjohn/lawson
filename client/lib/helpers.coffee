@@ -20,15 +20,7 @@ class Helpers
       timestamp: timestamp
       userId: Meteor.userId()
     Session.set("modal_book_tee_time_data", data)
-    onApprove = =>
-      teeTime = @getTeeTime(new Date(timestamp))
-      bookingValues = $("form.booking-form").form("get values")
-      if bookingValues["include-guests"]
-        numGuests = parseInt(bookingValues["num-guests"], 10)
-      else
-        numGuests = 0
-      Meteor.call("bookTeeTime", data.userId, teeTime._id, numGuests)
-    openModal(".book-tee-time.modal", onApprove)
+    openModal(".book-tee-time.modal", (->))
 
   openCancelTeeTimeModal: (timestamp) ->
     data =

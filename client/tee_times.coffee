@@ -47,7 +47,3 @@ Template.tee_times.helpers
 
   menuData: ->
     Helpers.getNextWeeks()
-
-bookTeeTime = (timestamp, userId) ->
-  teeTime = Helpers.getTeeTime(new Date(timestamp))
-  Meteor.call("bookTeeTime", Meteor.userId(), teeTime._id)

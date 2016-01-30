@@ -70,21 +70,19 @@ Meteor.methods
       setObj.profileImageId = settingsObj.profileImageId
     UserDetails.update({userId: userId}, {$set: setObj})
 
-  bookTeeTime: (userId, teeTimeId, numGuests) ->
+  bookTeeTime: (teeTimeId, players) ->
     teeTime = TeeTimes.findOne(teeTimeId)
-    if userId in _.pluck(teeTime.reservedPlayers, "userId")
+    if Meteor.userId() in _.pluck(teeTime.reservedPlayers, "userId")
       throw new Meteor.Error("already-reserved", "You have already reserved this tee time")
     if teeTime.reservedPlayers.length >= teeTime.potentialSpots
       throw new Meteor.Error("tee-tee-full", "This tee time is full")
-    if teeTime.potentialSpots - teeTime.reservedPlayers.length < 1 + numGuests
+    if teeTime.potentialSpots < teeTime.reservedPlayers.length + players.length
       throw new Meteor.Error("not-enough-spots", "There aren't enough spots available to book that many people")
-
-    reservedPlayers = [{userId: userId, isGuest: false}]
-    for i in [0...numGuests]
-      reservedPlayers.push({userId: userId, isGuest: true})
+    # TODO: add some validation for making sure a member isn't double booked
+    # TODO: add an email verification of the tee time
 
     TeeTimes.update(teeTimeId, {
-      $push: {reservedPlayers: {$each: reservedPlayers}}
+      $push: {reservedPlayers: {$each: players}}
     })
 
   cancelTeeTime: (userId, teeTimeId) ->

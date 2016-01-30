@@ -21,6 +21,10 @@ userId:
 isGuest:
   type: Boolean
   required: true
+firstName:
+  type: String
+lastName:
+  type: String
 
 # UserDetails
 
