@@ -35,3 +35,5 @@ yearJoined:
   type: Number
 ghinNumber:
   type: String
+handicap:
+  type: Float
