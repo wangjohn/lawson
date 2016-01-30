@@ -72,10 +72,10 @@ class Helpers
     TeeTimes.findOne({time: date})
 
   getUserTeeTimes: (userId) ->
-    TeeTimes.find({"reservedPlayers.user_id": userId})
+    TeeTimes.find({"reservedPlayers.userId": userId})
 
   getUserDetails: (userId) ->
-    details = UserDetails.findOne({user_id: userId})
+    details = UserDetails.findOne({userId: userId})
     if details
       details.profileImage = Images.findOne({_id: details.profileImageId})
       details
