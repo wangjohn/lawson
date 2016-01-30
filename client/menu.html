@@ -37,7 +37,9 @@
   <a class="ui dropdown item settings-dropdown">
     <span class="name">{{displayName}}</span>
     {{#with userDetails}}
-      <img class="ui avatar image" src="{{this.profileImage.url}}">
+      {{#if this.profileImage.url}}
+        <img class="ui avatar image" src="{{this.profileImage.url}}">
+      {{/if}}
     {{/with}}
     <div class="menu transition hidden" tabindex="-1">
       <a class="item" href="/settings">

@@ -51,6 +51,9 @@ Meteor.methods
       lastName: accountData.lastName
       yearJoined: accountData.yearJoined
       ghinNumber: accountData.ghinNumber
+    if userDetailsData.ghinNumber
+      handicap = getHandicap(userDetailsData.ghinNumber)
+      userDetailsData["handicap"] = handicap
     UserDetails.insert(userDetailsData)
     Accounts.sendVerificationEmail(userId)
 
