@@ -37,7 +37,7 @@ Template.modal_book_tee_time_member.rendered = ->
 
 Template.modal_book_tee_time_member.helpers
   memberDetails: ->
-    UserDetails.find()
+    UserDetails.find({userId: {$ne: Meteor.userId()}})
 
 Template.modal_book_tee_time_golfer.rendered = ->
   @$(".ui.checkbox.is-member").checkbox({
