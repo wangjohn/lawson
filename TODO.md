@@ -1,8 +1,8 @@
 TODO
 
+- Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Preview when booking tee time.
-- Add ability to book other members, each member should have a checkbox in their settings page about whether other people can book tee times for them. When other people are booked, they should get an email.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
 - Create card for guests.
@@ -14,6 +14,7 @@ TODO
 
 DONE
 
+- Add ability to book other members, each member should have a checkbox in their settings page about whether other people can book tee times for them. When other people are booked, they should get an email.
 - Set out a schema so that we know what each collection has. Also, camelcase, or underscore, but not both.
 - Do something for the case when there are no tee times available
 - Make sure there is a concept of admins, only they can add tee times

@@ -30,9 +30,16 @@ class HandicapRetriever
 getHandicap = (ghinNumber) ->
   new HandicapRetriever().retrieve(ghinNumber)
 
-sendBookingNotification = (userId) ->
+sendBookingNotification = (userId, teeTime) ->
   user = Meteor.users.findOne({_id: userId})
-  # Do email sending with Email.send
+  userEmail = user.emails[0]
+  # TODO: figure out the template for our booking email.
+  emailOptions =
+    from: "ProShop <proshop@presidiogolfclub.com>"
+    to: userEmail
+    subject: "Reservation confirmed for "
+    text: "You've confirmed a reservation for "
+  Email.send(emailOptions)
 
 Meteor.publish "tee_times", ->
   TeeTimes.find({time: {"$gte": new Date()}})
