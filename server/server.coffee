@@ -30,6 +30,10 @@ class HandicapRetriever
 getHandicap = (ghinNumber) ->
   new HandicapRetriever().retrieve(ghinNumber)
 
+sendBookingNotification = (userId) ->
+  user = Meteor.users.findOne({_id: userId})
+  # Do email sending with Email.send
+
 Meteor.publish "tee_times", ->
   TeeTimes.find({time: {"$gte": new Date()}})
 
@@ -78,12 +82,17 @@ Meteor.methods
       throw new Meteor.Error("tee-tee-full", "This tee time is full")
     if teeTime.potentialSpots < teeTime.reservedPlayers.length + players.length
       throw new Meteor.Error("not-enough-spots", "There aren't enough spots available to book that many people")
-    # TODO: add some validation for making sure a member isn't double booked
-    # TODO: add an email verification of the tee time
+    nonGuestAdditions = _.filter(players, (player) -> not player.isGuest)
+    nonGuestReserved = _.filter(teeTime.reservedPlayers, (player) -> not player.isGuest)
+    for player in nonGuestAdditions
+      if player in _.pluck(nonGuestReserved, "userId")
+        throw new Meteor.Error("already-reserved", "Player has already been reserved for this tee time", player.userId)
 
     TeeTimes.update(teeTimeId, {
       $push: {reservedPlayers: {$each: players}}
     })
+    for player in players
+      sendBookingNotification(player.userId) unless player.isGuest
 
   cancelTeeTime: (userId, teeTimeId) ->
     teeTime = TeeTimes.findOne(teeTimeId)
