@@ -1,11 +1,14 @@
+NEXT UP
+
+- Create card for guests.
+- Preview when booking tee time.
+
 TODO
 
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
-- Preview when booking tee time.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
-- Create card for guests.
 - Fix bug where multiple modals pop up after you exit one
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 - Make settings menu dropdown larger
