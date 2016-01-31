@@ -45,11 +45,3 @@ Template.modal_book_tee_time_golfer.rendered = ->
       @$(".add-member").toggleClass("hidden-field")
       @$(".add-guest").toggleClass("hidden-field")
   })
-
-Template.modal_book_tee_time.events
-  "click .ok.button": (evt) ->
-    data = Session.get("modal_book_tee_time_data") || {}
-    teeTime = Helpers.getTeeTime(new Date(data.timestamp))
-    players = [{userId: Meteor.userId(), isGuest: false}]
-    # TODO: take care of guests and other members
-    Meteor.call "bookTeeTime", teeTime._id, players

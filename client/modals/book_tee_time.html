@@ -53,7 +53,7 @@
 <template name="modal_book_tee_time_golfers">
   {{#if showGolfers}}
     {{#each range numGolfers}}
-      <div class="ui inline fields">
+      <div class="ui inline fields golfer-details">
         {{> modal_book_tee_time_golfer this}}
       </div>
     {{/each}}
@@ -82,7 +82,7 @@
 </template>
 
 <template name="modal_book_tee_time_member">
-  <div class="ui fluid floating dropdown labeled icon button">
+  <div class="ui fluid floating dropdown labeled icon button select-member">
     <i class="filter icon"></i>
     <span class="text">Select member</span>
     <div class="menu transition hidden" tabindex="-1">
