@@ -29,7 +29,7 @@ UI.registerHelper "playerData", (context, options) ->
       if player.isGuest
         fullName = player.name
       else
-        fullName = "#{playerDetails.firstName} #{playerDetails.lastName}"
+        fullName = "#{playerDetails?.firstName} #{playerDetails?.lastName}"
       data.push
         isReserved: true
         isGuest: player.isGuest

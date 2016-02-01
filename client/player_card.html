@@ -1,7 +1,7 @@
 <template name="player_card">
   <div class="ui centered card">
-    {{#if this.show_cancel}}
-      <div class="ui medium blurring dimmable image">
+    <div class="ui medium image {{blurrableClass this.show_cancel}}">
+      {{#if this.show_cancel}}
         <div class="ui dimmer transition hidden">
           <div class="content">
             <div class="center">
@@ -9,13 +9,17 @@
             </div>
           </div>
         </div>
-        {{> player_card_image url=this.data.profileImage.url isGuest=this.isGuest}}
-      </div>
-    {{else}}
-      <div class="ui medium image">
-        {{> player_card_image url=this.data.profileImage.url isGuest=this.isGuest}}
-      </div>
-    {{/if}}
+      {{/if}}
+      {{#if this.isGuest}}
+        <img class="ui fluid image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+      {{else}}
+        {{#if this.data.profileImage.url}}
+          <img class="ui fluid image" src="{{this.data.profileImage.url}}">
+        {{else}}
+          <img class="ui fluid image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+        {{/if}}
+      {{/if}}
+    </div>
     <div class="content">
       <h4 class="ui header">{{this.name}}</h4>
       <div class="meta">
@@ -78,13 +82,4 @@
 </template>
 
 <template name="player_card_image">
-  {{#if this.isGuest}}
-    <img src="http://www.semantic-ui.com/images/wireframe/white-image.png">
-  {{else}}
-    {{#if this.url}}
-      <img src="{{this.url}}">
-    {{else}}
-      <img src="http://www.semantic-ui.com/images/wireframe/white-image.png">
-    {{/if}}
-  {{/if}}
 </template>

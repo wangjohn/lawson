@@ -13,3 +13,8 @@ Template.player_card.events
   "click .open-cancel-tee-time": (evt) ->
     timestampStr = $(evt.currentTarget).closest(".item").attr("data-timestamp")
     Helpers.openCancelTeeTimeModal(parseInt(timestampStr, 10))
+
+Template.player_card.helpers
+  blurrableClass: (showCancel) ->
+    if showCancel
+      "blurring dimmable"
