@@ -22,8 +22,11 @@ UI.registerHelper "playerData", (context, options) ->
   if context
     availableSpots = context.potentialSpots - context.reservedPlayers.length
     data = []
+    reservedPlayers = _.sortBy context.reservedPlayers, (player) ->
+      if player.userId == Meteor.userId() then 0 else 1
+
     canBook = true
-    for player in context.reservedPlayers
+    for player in reservedPlayers
       canBook = false if player.userId == Meteor.userId()
       playerDetails = Helpers.getUserDetails(player.userId)
       if player.isGuest
