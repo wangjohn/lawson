@@ -1,6 +1,5 @@
 NEXT UP
 
-- Create card for guests.
 - Preview when booking tee time.
 
 TODO
@@ -31,3 +30,5 @@ DONE
 - Create menu when you try to add tee time
 - Handle ability to add guests
 - Ensure that you can't add tee times on the same time
+- Create card for guests.
+- Show cancel only for the current user and guests
