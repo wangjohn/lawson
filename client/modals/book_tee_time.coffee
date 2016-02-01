@@ -6,6 +6,11 @@ Template.modal_book_tee_time.helpers
     data = Session.get("modal_book_tee_time_data") || {}
     if data.timestamp
       Helpers.getTeeTime(new Date(data.timestamp))
+  teeTimeData: ->
+    data = Session.get("modal_book_tee_time_data") || {}
+    if data.timestamp
+      teeTime = Helpers.getTeeTime(new Date(data.timestamp))
+      teeTime
 
 Template.modal_book_tee_time_golfers.helpers
   showGolfers: ->
