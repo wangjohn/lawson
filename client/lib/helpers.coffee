@@ -57,7 +57,8 @@ class Helpers
         isMember = $el.find(".is-member").checkbox("is checked")
         if isMember
           userId = $el.find(".select-member").dropdown("get value")
-          players.push({userId: userId, isGuest: false})
+          if typeof userId == 'string'
+            players.push({userId: userId, isGuest: false})
         else
           name = $el.find("input[name='guest-name']").val()
           players.push({userId: Meteor.userId(), isGuest: true, name: name})

@@ -7,6 +7,7 @@ Template.modal_book_tee_time.helpers
     if data.timestamp
        Helpers.getTeeTime(new Date(data.timestamp))
   teeTimeData: ->
+    Session.get("modal_book_tee_time_golfers_changed")
     data = Session.get("modal_book_tee_time_data") || {}
     return unless data.timestamp
     teeTime = Helpers.getTeeTime(new Date(data.timestamp))
@@ -33,6 +34,7 @@ Template.modal_book_tee_time.rendered = ->
     onChange: =>
       isChecked = $(".ui.checkbox.include-golfers").checkbox("is checked")
       Session.set("modal_book_tee_time_include_golfers", isChecked)
+      Session.set("modal_book_tee_time_golfers_changed", Date.now())
       $(".num-golfers-field").toggleClass("hidden-field")
   })
   @$(".ui.dropdown.num-golfers").dropdown({
@@ -42,7 +44,10 @@ Template.modal_book_tee_time.rendered = ->
   })
 
 Template.modal_book_tee_time_member.rendered = ->
-  @$(".ui.dropdown").dropdown()
+  @$(".ui.dropdown").dropdown({
+    onChange: ->
+      Session.set("modal_book_tee_time_golfers_changed", Date.now())
+  })
 
 Template.modal_book_tee_time_member.helpers
   memberDetails: ->
@@ -54,3 +59,7 @@ Template.modal_book_tee_time_golfer.rendered = ->
       @$(".add-member").toggleClass("hidden-field")
       @$(".add-guest").toggleClass("hidden-field")
   })
+
+Template.modal_book_tee_time_golfer.events
+  "change input[name='guest-name']": (evt) ->
+    Session.set("modal_book_tee_time_golfers_changed", Date.now())
