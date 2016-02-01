@@ -29,7 +29,9 @@
     {{#if this.teeTimes}}
       <div class="ui list">
         {{#each this.teeTimes}}
-          {{> tee_time this}}
+          {{#with teeTimeData this}}
+            {{> tee_time this}}
+          {{/with}}
         {{/each}}
       </div>
     {{else}}

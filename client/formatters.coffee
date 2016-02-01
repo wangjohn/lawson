@@ -18,32 +18,6 @@ UI.registerHelper "findLength", (context, options) ->
   if context
     context.length
 
-UI.registerHelper "playerData", (context, options) ->
-  if context
-    availableSpots = context.potentialSpots - context.reservedPlayers.length
-    data = []
-    reservedPlayers = _.sortBy context.reservedPlayers, (player) ->
-      if player.userId == Meteor.userId() then 0 else 1
-
-    for player in reservedPlayers
-      playerDetails = Helpers.getUserDetails(player.userId)
-      if player.isGuest
-        fullName = player.name
-      else
-        fullName = "#{playerDetails?.firstName} #{playerDetails?.lastName}"
-      data.push
-        isReserved: true
-        isGuest: player.isGuest
-        player: playerDetails
-        name: fullName
-
-    canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
-    for i in [0...availableSpots]
-      data.push
-        isReserved: false
-        canBook: canBook
-    data
-
 UI.registerHelper "imageUrl", (context, options) ->
   if context
     Images.findOne({_id: context})?.url

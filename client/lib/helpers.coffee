@@ -15,6 +15,35 @@ openModal = (selector, onApprove, opts = {}) ->
     .modal("show")
 
 class Helpers
+  teeTimeData: (teeTime) =>
+    availableSpots = teeTime.potentialSpots - teeTime.reservedPlayers.length
+    data = []
+    reservedPlayers = _.sortBy teeTime.reservedPlayers, (player) ->
+      if player.userId == Meteor.userId() then 0 else 1
+
+    for player in reservedPlayers
+      playerDetails = @getUserDetails(player.userId)
+      if player.isGuest
+        fullName = player.name
+      else
+        fullName = "#{playerDetails?.firstName} #{playerDetails?.lastName}"
+      data.push
+        isReserved: true
+        isGuest: player.isGuest
+        player: playerDetails
+        name: fullName
+
+    canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
+    for i in [0...availableSpots]
+      data.push
+        isReserved: false
+        canBook: canBook
+
+    result =
+      data: data
+      teeTime: teeTime
+    result
+
   openBookTeeTimeModal: (timestamp) =>
     data =
       timestamp: timestamp

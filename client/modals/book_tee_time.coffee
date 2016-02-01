@@ -5,12 +5,13 @@ Template.modal_book_tee_time.helpers
   teeTime: ->
     data = Session.get("modal_book_tee_time_data") || {}
     if data.timestamp
-      Helpers.getTeeTime(new Date(data.timestamp))
+       Helpers.getTeeTime(new Date(data.timestamp))
   teeTimeData: ->
     data = Session.get("modal_book_tee_time_data") || {}
     if data.timestamp
       teeTime = Helpers.getTeeTime(new Date(data.timestamp))
-      teeTime
+      teeTime = _.clone(teeTime)
+      Helpers.teeTimeData(teeTime)
 
 Template.modal_book_tee_time_golfers.helpers
   showGolfers: ->

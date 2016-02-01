@@ -28,6 +28,9 @@ Template.tee_times.helpers
         date: date
         teeTimes: Helpers.getTeeTimes(date)
     result
-
   menuData: ->
     Helpers.getNextWeeks()
+
+Template.tee_time_list.helpers
+  teeTimeData: (teeTime) ->
+    Helpers.teeTimeData(teeTime)
