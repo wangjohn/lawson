@@ -1,9 +1,11 @@
 NEXT UP
 
+- Make player cards smaller in the content section
 - Preview when booking tee time.
 
 TODO
 
+- Player card images should be cropped to a specific height/width.
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
