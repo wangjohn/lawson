@@ -1,6 +1,9 @@
 Template.settings.helpers
   settingsData: ->
     Helpers.getUserDetails(Meteor.userId())
+  playerName: ->
+    playerDetails = Helpers.getUserDetails(Meteor.userId())
+    "#{playerDetails?.firstName} #{playerDetails?.lastName}"
   loading: ->
     Session.get("settings_loading")
 
