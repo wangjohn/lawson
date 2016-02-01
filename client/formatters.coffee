@@ -16,7 +16,7 @@ UI.registerHelper "formatTimestamp", (context, options) ->
 
 UI.registerHelper "findLength", (context, options) ->
   if context
-    context.length || context.count()
+    context.length
 
 UI.registerHelper "playerData", (context, options) ->
   if context
@@ -25,10 +25,16 @@ UI.registerHelper "playerData", (context, options) ->
     canBook = true
     for player in context.reservedPlayers
       canBook = false if player.userId == Meteor.userId()
+      playerDetails = Helpers.getUserDetails(player.userId)
+      if player.isGuest
+        fullName = player.name
+      else
+        fullName = "#{playerDetails.firstName} #{playerDetails.lastName}"
       data.push
         isReserved: true
         isGuest: player.isGuest
-        player: Helpers.getUserDetails(player.userId)
+        player: playerDetails
+        name: fullName
     for i in [0...availableSpots]
       data.push
         isReserved: false

@@ -26,7 +26,7 @@
   {{#each this}}
   <div class="ui container segment date-container" id="tee-times-{{formatDate this.date}}">
     <h2 class="ui dividing header">{{formatDay this.date}}</h2>
-    {{#if findLength this.teeTimes}}
+    {{#if this.teeTimes}}
       <div class="ui list">
         {{#each this.teeTimes}}
           {{> tee_time this}}

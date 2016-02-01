@@ -2,40 +2,42 @@
   <div class="ui centered card">
     {{#if this.show_cancel}}
       <div class="ui medium blurring dimmable image">
-          <div class="ui dimmer transition hidden">
-            <div class="content">
-              <div class="center">
-                <div class="ui red inverted button open-cancel-tee-time">Cancel tee time</div>
-              </div>
+        <div class="ui dimmer transition hidden">
+          <div class="content">
+            <div class="center">
+              <div class="ui red inverted button open-cancel-tee-time">Cancel tee time</div>
             </div>
           </div>
-        {{#with this.data.profileImage}}
-          <img src="{{this.url}}" >
-        {{/with}}
+        </div>
+        {{> player_card_image url=this.data.profileImage.url isGuest=this.isGuest}}
       </div>
     {{else}}
       <div class="ui medium image">
-        {{#with this.data.profileImage}}
-          <img src="{{this.url}}" >
-        {{/with}}
+        {{> player_card_image url=this.data.profileImage.url isGuest=this.isGuest}}
       </div>
     {{/if}}
     <div class="content">
-      <h4 class="ui header">{{this.data.firstName}} {{this.data.lastName}}</h4>
+      <h4 class="ui header">{{this.name}}</h4>
       <div class="meta">
-        {{#if this.data.yearJoined}}
-          <span class="meta-content">Joined {{this.data.yearJoined}}</span>
+        {{#if this.isGuest}}
+          <span class="meta-content">Guest of {{this.data.firstName}} {{this.data.lastName}}</span>
+        {{else}}
+          {{#if this.data.yearJoined}}
+            <span class="meta-content">Joined {{this.data.yearJoined}}</span>
+          {{/if}}
         {{/if}}
       </div>
     </div>
-    {{#if this.data.handicap}}
-      <div class="extra content">
-        <span>
-          <i class="user icon"></i>
-          {{this.data.handicap}} Handicap
-        </span>
-      </div>
-    {{/if}}
+    {{#unless this.isGuest}}
+      {{#if this.data.handicap}}
+        <div class="extra content">
+          <span>
+            <i class="user icon"></i>
+            {{this.data.handicap}} Handicap
+          </span>
+        </div>
+      {{/if}}
+    {{/unless}}
   </div>
 </template>
 
@@ -73,4 +75,16 @@
   <div class="meta">
     <span class="meta-content"></span>
   </div>
+</template>
+
+<template name="player_card_image">
+  {{#if this.isGuest}}
+    <img src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+  {{else}}
+    {{#if this.url}}
+      <img src="{{this.url}}">
+    {{else}}
+      <img src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+    {{/if}}
+  {{/if}}
 </template>
