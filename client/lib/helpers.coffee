@@ -15,7 +15,7 @@ openModal = (selector, onApprove, opts = {}) ->
     .modal("show")
 
 class Helpers
-  teeTimeData: (teeTime) =>
+  teeTimeData: (teeTime, options = {}) =>
     return unless teeTime
     availableSpots = teeTime.potentialSpots - teeTime.reservedPlayers.length
     data = []
@@ -34,7 +34,11 @@ class Helpers
         player: playerDetails
         name: fullName
 
-    canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
+    if "canBook" of options
+      canBook = options["canBook"]
+    else
+      canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
+
     for i in [0...availableSpots]
       data.push
         isReserved: false
@@ -45,6 +49,20 @@ class Helpers
       teeTime: teeTime
     result
 
+  harvestTeeTimePlayers: =>
+    players = [{userId: Meteor.userId(), isGuest: false}]
+    if $(".include-golfers").checkbox("is checked")
+      $(".golfer-details").each (i, elem) ->
+        $el = $(elem)
+        isMember = $el.find(".is-member").checkbox("is checked")
+        if isMember
+          userId = $el.find(".select-member").dropdown("get value")
+          players.push({userId: userId, isGuest: false})
+        else
+          name = $el.find("input[name='guest-name']").val()
+          players.push({userId: Meteor.userId(), isGuest: true, name: name})
+    players
+
   openBookTeeTimeModal: (timestamp) =>
     data =
       timestamp: timestamp
@@ -53,17 +71,7 @@ class Helpers
     onApprove = =>
       data = Session.get("modal_book_tee_time_data") || {}
       teeTime = @getTeeTime(new Date(data.timestamp))
-      players = [{userId: Meteor.userId(), isGuest: false}]
-      if $(".include-golfers").checkbox("is checked")
-        $(".golfer-details").each (i, elem) ->
-          $el = $(elem)
-          isMember = $el.find(".is-member").checkbox("is checked")
-          if isMember
-            userId = $el.find(".select-member").dropdown("get value")
-            players.push({userId: userId, isGuest: false})
-          else
-            name = $el.find("input[name='guest-name']").val()
-            players.push({userId: Meteor.userId(), isGuest: true, name: name})
+      players = @harvestTeeTimePlayers()
       Meteor.call "bookTeeTime", teeTime._id, players
     openModal(".book-tee-time.modal", onApprove)
 

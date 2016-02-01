@@ -8,10 +8,13 @@ Template.modal_book_tee_time.helpers
        Helpers.getTeeTime(new Date(data.timestamp))
   teeTimeData: ->
     data = Session.get("modal_book_tee_time_data") || {}
-    if data.timestamp
-      teeTime = Helpers.getTeeTime(new Date(data.timestamp))
-      teeTime = _.clone(teeTime)
-      Helpers.teeTimeData(teeTime)
+    return unless data.timestamp
+    teeTime = Helpers.getTeeTime(new Date(data.timestamp))
+    return unless teeTime
+    reservedPlayers = _.clone(teeTime.reservedPlayers)
+    newPlayers = Helpers.harvestTeeTimePlayers()
+    teeTime.reservedPlayers = reservedPlayers.concat(newPlayers)
+    Helpers.teeTimeData(teeTime, {canBook: false})
 
 Template.modal_book_tee_time_golfers.helpers
   showGolfers: ->

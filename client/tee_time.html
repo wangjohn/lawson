@@ -1,6 +1,8 @@
 <template name="tee_time">
   <div class="item" data-timestamp="{{formatTimestamp this.teeTime.time}}">
-    <h3 class="ui header">{{formatTime this.teeTime.time}}</h3>
+    {{#unless this.hideHeader}}
+      <h3 class="ui header">{{formatTime this.teeTime.time}}</h3>
+    {{/unless}}
     <div class="ui four cards">
       {{#each this.data}}
         {{#if this.isReserved}}
