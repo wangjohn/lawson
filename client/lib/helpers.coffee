@@ -16,6 +16,7 @@ openModal = (selector, onApprove, opts = {}) ->
 
 class Helpers
   teeTimeData: (teeTime) =>
+    return unless teeTime
     availableSpots = teeTime.potentialSpots - teeTime.reservedPlayers.length
     data = []
     reservedPlayers = _.sortBy teeTime.reservedPlayers, (player) ->

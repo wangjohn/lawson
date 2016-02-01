@@ -28,7 +28,7 @@ Template.modal_book_tee_time.rendered = ->
   Session.set("modal_book_tee_time_num_golfers", 0)
   @$(".ui.checkbox.include-golfers").checkbox({
     onChange: =>
-      isChecked = $(".ui.checkbox.include-golferss").checkbox("is checked")
+      isChecked = $(".ui.checkbox.include-golfers").checkbox("is checked")
       Session.set("modal_book_tee_time_include_golfers", isChecked)
       $(".num-golfers-field").toggleClass("hidden-field")
   })
