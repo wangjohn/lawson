@@ -1,7 +1,7 @@
 NEXT UP
 
 - Make player cards smaller in the content section
-- Preview when booking tee time.
+- Preview shouldn't show cancel or book on any player card
 
 TODO
 
@@ -18,6 +18,7 @@ TODO
 
 DONE
 
+- Preview when booking tee time.
 - Add ability to book other members, each member should have a checkbox in their settings page about whether other people can book tee times for them. When other people are booked, they should get an email.
 - Set out a schema so that we know what each collection has. Also, camelcase, or underscore, but not both.
 - Do something for the case when there are no tee times available

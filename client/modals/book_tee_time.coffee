@@ -15,7 +15,7 @@ Template.modal_book_tee_time.helpers
     reservedPlayers = _.clone(teeTime.reservedPlayers)
     newPlayers = Helpers.harvestTeeTimePlayers()
     teeTime.reservedPlayers = reservedPlayers.concat(newPlayers)
-    Helpers.teeTimeData(teeTime, {canBook: false})
+    Helpers.teeTimeData(teeTime, {canBook: false, canCancel: false})
 
 Template.modal_book_tee_time_golfers.helpers
   showGolfers: ->

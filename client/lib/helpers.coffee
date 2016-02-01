@@ -28,11 +28,16 @@ class Helpers
         fullName = player.name
       else
         fullName = "#{playerDetails?.firstName} #{playerDetails?.lastName}"
+      if "canCancel" of options
+        canCancel = options["canCancel"]
+      else
+        canCancel = player.userId and player.userId == Meteor.userId()
       data.push
         isReserved: true
         isGuest: player.isGuest
         player: playerDetails
         name: fullName
+        canCancel: canCancel
 
     if "canBook" of options
       canBook = options["canBook"]

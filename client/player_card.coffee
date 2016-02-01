@@ -15,11 +15,6 @@ Template.player_card.events
     Helpers.openCancelTeeTimeModal(parseInt(timestampStr, 10))
 
 Template.player_card.helpers
-  blurrableClass: (playerData) ->
-    userId = playerData?.userId
-    if userId and userId == Meteor.userId()
+  blurrableClass: (canCancel) ->
+    if canCancel
       "blurring dimmable"
-
-  canCancel: (playerData) ->
-    userId = playerData?.userId
-    userId and userId == Meteor.userId()

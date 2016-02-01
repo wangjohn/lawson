@@ -1,7 +1,7 @@
 <template name="player_card">
   <div class="ui centered card">
-    <div class="ui medium image {{blurrableClass this.data}}">
-      {{#if canCancel this.data}}
+    <div class="ui medium image {{blurrableClass this.canCancel}}">
+      {{#if this.canCancel}}
         <div class="ui dimmer transition hidden">
           <div class="content">
             <div class="center">
