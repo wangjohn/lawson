@@ -1,5 +1,6 @@
 NEXT UP
 
+- Get a better date format so it's easier to tell what day you're booking on.
 - Make player cards smaller in the content section
 
 TODO
