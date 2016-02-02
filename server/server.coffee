@@ -31,6 +31,7 @@ getHandicap = (ghinNumber) ->
   new HandicapRetriever().retrieve(ghinNumber)
 
 sendBookingNotification = (userId, teeTime) ->
+  return
   user = Meteor.users.findOne({_id: userId})
   userEmail = user.emails[0]
   # TODO: figure out the template for our booking email.
@@ -66,7 +67,7 @@ Meteor.methods
       handicap = getHandicap(userDetailsData.ghinNumber)
       userDetailsData["handicap"] = handicap
     UserDetails.insert(userDetailsData)
-    Accounts.sendVerificationEmail(userId)
+    #Accounts.sendVerificationEmail(userId)
 
   updateSettings: (userId, settingsObj) ->
     setObj =
