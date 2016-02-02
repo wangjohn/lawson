@@ -1,7 +1,6 @@
 NEXT UP
 
 - Make player cards smaller in the content section
-- Player card images should be cropped to a specific height/width.
 
 TODO
 
@@ -35,3 +34,4 @@ DONE
 - Create card for guests.
 - Show cancel only for the current user and guests
 - Preview shouldn't show cancel or book on any player card
+- Player card images should be cropped to a specific height/width.
