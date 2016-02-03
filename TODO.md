@@ -1,10 +1,13 @@
 NEXT UP
 
+- Canceling a tee time in my reservations should have a good state to come back to.
 - Get a better date format so it's easier to tell what day you're booking on.
 - Make player cards smaller in the content section
 
 TODO
 
+- My reservations should have an empty state.
+- Fix modal being in a weird position when it is opened.
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
