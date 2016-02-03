@@ -1,5 +1,6 @@
 NEXT UP
 
+- Booking modal should have a clearer additional golfer thing.
 - Make player cards smaller in the content section
 
 TODO
