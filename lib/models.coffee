@@ -4,7 +4,6 @@
 @Images = new FS.Collection("images", {
   stores: [
     new FS.Store.FileSystem("images", {
-      path: "/home/lawson/cfsimages"
       beforeWrite: (fileObj) ->
         {extension: "png", type: "image/png"}
       transformWrite: (fileObj, readStream, writeStream) ->
