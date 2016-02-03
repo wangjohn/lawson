@@ -1,5 +1,21 @@
 <template name="reservations">
   <div class="ui container">
-    {{> tee_time_list reservedTeeTimes}}
+    {{#if reservedTeeTimes}}
+      {{> tee_time_list reservedTeeTimes}}
+    {{else}}
+      <div class="ui centered grid">
+        <div class="column empty-state">
+          <h1 class="ui center aligned icon header">
+            <img class="ui fluid image" src="/images/empty_state.jpg">
+            <div class="content">
+              No Current Reservations
+              <div class="sub header">
+                Your golf clubs miss you, maybe you should book a tee time?
+              </div>
+            </div>
+          </h1>
+        </div>
+      </div>
+    {{/if}}
   </div>
 </template>

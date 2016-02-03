@@ -5,6 +5,11 @@
   margin-top: 50px;
 }
 
+.column.empty-state {
+  max-width: 500px;
+  margin-top: 50px;
+}
+
 .column.signup-column {
   max-width: 550px;
   margin-top: 50px;

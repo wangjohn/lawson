@@ -1,12 +1,10 @@
 NEXT UP
 
-- Canceling a tee time in my reservations should have a good state to come back to.
 - Get a better date format so it's easier to tell what day you're booking on.
 - Make player cards smaller in the content section
 
 TODO
 
-- My reservations should have an empty state.
 - Fix modal being in a weird position when it is opened.
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
@@ -20,6 +18,8 @@ TODO
 
 DONE
 
+- My reservations should have an empty state.
+- Canceling a tee time in my reservations should have a good state to come back to.
 - Preview when booking tee time.
 - Add ability to book other members, each member should have a checkbox in their settings page about whether other people can book tee times for them. When other people are booked, they should get an email.
 - Set out a schema so that we know what each collection has. Also, camelcase, or underscore, but not both.
