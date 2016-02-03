@@ -1,6 +1,5 @@
 NEXT UP
 
-- Get a better date format so it's easier to tell what day you're booking on.
 - Make player cards smaller in the content section
 
 TODO
@@ -18,6 +17,7 @@ TODO
 
 DONE
 
+- Get a better date format so it's easier to tell what day you're booking on.
 - My reservations should have an empty state.
 - Canceling a tee time in my reservations should have a good state to come back to.
 - Preview when booking tee time.

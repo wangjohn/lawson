@@ -4,7 +4,7 @@ UI.registerHelper "formatDate", (context, options) ->
 
 UI.registerHelper "formatDay", (context, options) ->
   if context
-    moment(context).format("dddd, MMM Do YYYY")
+    moment(context).format("dddd M/D/YYYY")
 
 UI.registerHelper "formatTime", (context, options) ->
   if context
