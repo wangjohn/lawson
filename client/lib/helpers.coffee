@@ -17,10 +17,11 @@ openModal = (selector, onApprove, opts = {}) ->
 class Helpers
   teeTimeData: (teeTime, options = {}) =>
     return unless teeTime
-    availableSpots = teeTime.potentialSpots - teeTime.reservedPlayers.length
     data = []
-    reservedPlayers = _.sortBy teeTime.reservedPlayers, (player) ->
+    reservedPlayers = options.reservedPlayers || teeTime.reservedPlayers
+    reservedPlayers = _.sortBy reservedPlayers, (player) ->
       if player.userId == Meteor.userId() then 0 else 1
+    availableSpots = teeTime.potentialSpots - reservedPlayers.length
 
     for player in reservedPlayers
       playerDetails = @getUserDetails(player.userId)
@@ -56,17 +57,16 @@ class Helpers
 
   harvestTeeTimePlayers: =>
     players = [{userId: Meteor.userId(), isGuest: false}]
-    if $(".include-golfers").checkbox("is checked")
-      $(".golfer-details").each (i, elem) ->
-        $el = $(elem)
-        isMember = $el.find(".is-member").checkbox("is checked")
-        if isMember
-          userId = $el.find(".select-member").dropdown("get value")
-          if typeof userId == 'string'
-            players.push({userId: userId, isGuest: false})
-        else
-          name = $el.find("input[name='guest-name']").val()
-          players.push({userId: Meteor.userId(), isGuest: true, name: name})
+    $(".golfer-details").each (i, elem) ->
+      $el = $(elem)
+      isMember = $el.find(".is-member").checkbox("is checked")
+      if isMember
+        userId = $el.find(".select-member").dropdown("get value")
+        if typeof userId == 'string'
+          players.push({userId: userId, isGuest: false})
+      else
+        name = $el.find("input[name='guest-name']").val()
+        players.push({userId: Meteor.userId(), isGuest: true, name: name})
     players
 
   openBookTeeTimeModal: (timestamp) =>
