@@ -54,6 +54,11 @@
         Book tee time
       </div>
     </div>
+    {{#if isLoading}}
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">Loading</div>
+      </div>
+    {{/if}}
   </div>
 </template>
 

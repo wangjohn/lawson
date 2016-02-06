@@ -71,18 +71,6 @@ class Helpers
           players.push({userId: Meteor.userId(), isGuest: true, name: name})
     players
 
-  openBookTeeTimeModal: (timestamp) =>
-    data =
-      timestamp: timestamp
-      userId: Meteor.userId()
-    Session.set("modal_book_tee_time_data", data)
-    onApprove = =>
-      data = Session.get("modal_book_tee_time_data") || {}
-      teeTime = @getTeeTime(new Date(data.timestamp))
-      players = @harvestTeeTimePlayers()
-      Meteor.call "bookTeeTime", teeTime._id, players
-    openModal(".book-tee-time.modal", onApprove)
-
   openCancelTeeTimeModal: (timestamp) ->
     data =
       timestamp: timestamp

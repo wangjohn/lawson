@@ -16,6 +16,8 @@ Template.modal_book_tee_time.helpers
     newPlayers = Helpers.harvestTeeTimePlayers()
     reservedPlayers = reservedPlayers.concat(newPlayers)
     Helpers.teeTimeData(teeTime, {canBook: false, canCancel: false, reservedPlayers: reservedPlayers})
+  isLoading: ->
+    Session.get("modal_book_tee_time_loading")
 
 Template.modal_book_tee_time_golfers.helpers
   showGolfers: ->
@@ -63,3 +65,13 @@ Template.modal_book_tee_time_golfer.rendered = ->
 Template.modal_book_tee_time_golfer.events
   "change input[name='guest-name']": (evt) ->
     Session.set("modal_book_tee_time_golfers_changed", Date.now())
+
+Template.modal_book_tee_time.events
+  "click .actions .ok": (evt) ->
+    data = Session.get("modal_book_tee_time_data") || {}
+    teeTime = Helpers.getTeeTime(new Date(data.timestamp))
+    players = Helpers.harvestTeeTimePlayers()
+    Session.set("modal_book_tee_time_loading", true)
+    Meteor.call "bookTeeTime", teeTime._id, players, (err) ->
+      Session.set("modal_book_tee_time_loading", false)
+      Router.go("/reservations")
