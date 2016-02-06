@@ -26,3 +26,7 @@
 .hidden-field {
   display: none !important;
 }
+
+.book-user .ui.disabled.input {
+  opacity: 1;
+}

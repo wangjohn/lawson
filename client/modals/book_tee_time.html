@@ -57,12 +57,29 @@
 
 <template name="modal_book_tee_time_golfers">
   {{#if showGolfers}}
-    {{#each range numGolfers}}
+      <div class="ui inline fields">
+        {{> modal_book_tee_time_user 1}}
+      </div>
+    {{#each range numGolfers start=1}}
       <div class="ui inline fields golfer-details">
         {{> modal_book_tee_time_golfer this}}
       </div>
     {{/each}}
   {{/if}}
+</template>
+
+<template name="modal_book_tee_time_user">
+  <div class="ui two wide field">
+    <label>Golfer {{this}}</label>
+  </div>
+  <div class="ui four wide field">
+  </div>
+  <div class="ui ten wide field book-user">
+    <div class="ui left icon disabled input">
+      <i class="user icon"></i>
+      <input type="text" name="guest-name" value="John Wang">
+    </div>
+  </div>
 </template>
 
 <template name="modal_book_tee_time_golfer">
