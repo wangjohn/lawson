@@ -18,6 +18,8 @@ Template.modal_book_tee_time.helpers
     Helpers.teeTimeData(teeTime, {canBook: false, canCancel: false, reservedPlayers: reservedPlayers})
 
 Template.modal_book_tee_time_golfers.helpers
+  showGolfers: ->
+    Session.get("modal_book_tee_time_include_additional_golfers")
   numGolfers: ->
     Session.get("modal_book_tee_time_num_golfers") || 1
 
@@ -27,6 +29,14 @@ Template.modal_book_tee_time_golfer.helpers
 
 Template.modal_book_tee_time.rendered = ->
   Session.set("modal_book_tee_time_num_golfers", 1)
+  Session.set("modal_book_tee_time_include_additional_golfers", false)
+  @$(".ui.checkbox.include-additional-golfers").checkbox({
+    onChange: =>
+      isChecked = $(".ui.checkbox.include-additional-golfers").checkbox("is checked")
+      Session.set("modal_book_tee_time_include_additional_golfers", isChecked)
+      Session.set("modal_book_tee_time_golfers_changed", Date.now())
+      $(".num-golfers-field").toggleClass("hidden-field")
+  })
   @$(".ui.dropdown.num-golfers").dropdown({
     onChange: (val, text, $elem) =>
       numGolfers = parseInt(val, 10)

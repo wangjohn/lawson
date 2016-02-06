@@ -10,7 +10,13 @@
     <div class="content">
       <form class="ui form booking-form">
         <div class="ui inline fields">
-          <div class="ui twelve wide field num-golfers-field">
+          <div class="ui four wide field">
+            <div class="ui toggle checkbox include-additional-golfers">
+              <input type="checkbox" name="include-additional-golfers" class="hidden">
+              <label>Add additional golfers</label>
+            </div>
+          </div>
+          <div class="ui twelve wide field hidden-field num-golfers-field">
             <label>Number of golfers</label>
             <div class="ui selection dropdown num-golfers">
               <input type="hidden" name="num-golfers" value="1">
@@ -50,11 +56,13 @@
 </template>
 
 <template name="modal_book_tee_time_golfers">
-  {{#each range numGolfers}}
-    <div class="ui inline fields golfer-details">
-      {{> modal_book_tee_time_golfer this}}
-    </div>
-  {{/each}}
+  {{#if showGolfers}}
+    {{#each range numGolfers}}
+      <div class="ui inline fields golfer-details">
+        {{> modal_book_tee_time_golfer this}}
+      </div>
+    {{/each}}
+  {{/if}}
 </template>
 
 <template name="modal_book_tee_time_golfer">
