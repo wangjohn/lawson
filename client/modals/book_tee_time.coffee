@@ -75,3 +75,5 @@ Template.modal_book_tee_time.events
     Meteor.call "bookTeeTime", teeTime._id, players, (err) ->
       Session.set("modal_book_tee_time_loading", false)
       Router.go("/reservations")
+  "click .actions .cancel": (evt) ->
+    Router.go("/tee_times")
