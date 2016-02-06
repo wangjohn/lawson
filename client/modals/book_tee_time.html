@@ -1,6 +1,6 @@
 <template name="modal_book_tee_time">
-  <div class="ui book-tee-time modal">
-    <div class="ui icon header">
+  <div class="ui book-tee-time">
+    <div class="ui center aligned icon header">
       <i class="add user icon"></i>
       <h1 class="ui header">
         Booking {{formatTime timestamp}}
@@ -16,7 +16,9 @@
               <label>Add additional golfers</label>
             </div>
           </div>
-          <div class="ui twelve wide field hidden-field num-golfers-field">
+        </div>
+        <div class="ui inline fields">
+          <div class="ui six wide field hidden-field num-golfers-field">
             <label>Number of golfers</label>
             <div class="ui selection dropdown num-golfers">
               <input type="hidden" name="num-golfers" value="1">
@@ -57,9 +59,9 @@
 
 <template name="modal_book_tee_time_golfers">
   {{#if showGolfers}}
-      <div class="ui inline fields">
-        {{> modal_book_tee_time_user 1}}
-      </div>
+    <div class="ui inline fields">
+      {{> modal_book_tee_time_user 1}}
+    </div>
     {{#each range numGolfers start=1}}
       <div class="ui inline fields golfer-details">
         {{> modal_book_tee_time_golfer this}}
