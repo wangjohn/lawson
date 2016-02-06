@@ -1,6 +1,6 @@
 <template name="modal_book_tee_time">
-  <div class="ui book-tee-time modal">
-    <div class="ui icon header">
+  <div class="ui book-tee-time">
+    <div class="ui center aligned icon header">
       <i class="add user icon"></i>
       <h1 class="ui header">
         Booking {{formatTime timestamp}}
@@ -11,18 +11,24 @@
       <form class="ui form booking-form">
         <div class="ui inline fields">
           <div class="ui four wide field">
-            <div class="ui toggle checkbox include-golfers">
-              <input type="checkbox" name="include-golfers" class="hidden">
-              <label>Add golfers</label>
+            <div class="ui toggle checkbox include-additional-golfers">
+              <input type="checkbox" name="include-additional-golfers" class="hidden">
+              <label>Add additional golfers</label>
             </div>
           </div>
-          <div class="ui twelve wide field hidden-field num-golfers-field">
+        </div>
+        <div class="ui inline fields">
+          <div class="ui six wide field hidden-field num-golfers-field">
+            <label>Number of golfers</label>
             <div class="ui selection dropdown num-golfers">
-              <input type="hidden" name="num-golfers">
+              <input type="hidden" name="num-golfers" value="1">
               <i class="dropdown icon"></i>
-              <div class="default text">Number of golfers</div>
+              <div class="default text">
+                <span class="ui icon">1</span>
+                <i class="ui icon user"></i>
+              </div>
               <div class="menu">
-                {{#each (range (availableSpots teeTime) start=1)}}
+                {{#each (range (availableSpots teeTime) start=1 inclusive=true)}}
                   <div class="item" data-value="{{this}}">
                     <span class="ui icon">{{this}}</span>
                     {{#each (range this)}}
@@ -48,17 +54,39 @@
         Book tee time
       </div>
     </div>
+    {{#if isLoading}}
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">Loading</div>
+      </div>
+    {{/if}}
   </div>
 </template>
 
 <template name="modal_book_tee_time_golfers">
   {{#if showGolfers}}
-    {{#each range numGolfers}}
+    <div class="ui inline fields">
+      {{> modal_book_tee_time_user 1}}
+    </div>
+    {{#each range numGolfers start=1}}
       <div class="ui inline fields golfer-details">
         {{> modal_book_tee_time_golfer this}}
       </div>
     {{/each}}
   {{/if}}
+</template>
+
+<template name="modal_book_tee_time_user">
+  <div class="ui two wide field">
+    <label>Golfer {{this}}</label>
+  </div>
+  <div class="ui four wide field">
+  </div>
+  <div class="ui ten wide field book-user">
+    <div class="ui left icon disabled input">
+      <i class="user icon"></i>
+      <input type="text" name="guest-name" value="John Wang">
+    </div>
+  </div>
 </template>
 
 <template name="modal_book_tee_time_golfer">

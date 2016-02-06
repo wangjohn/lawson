@@ -17,10 +17,11 @@ openModal = (selector, onApprove, opts = {}) ->
 class Helpers
   teeTimeData: (teeTime, options = {}) =>
     return unless teeTime
-    availableSpots = teeTime.potentialSpots - teeTime.reservedPlayers.length
     data = []
-    reservedPlayers = _.sortBy teeTime.reservedPlayers, (player) ->
+    reservedPlayers = options.reservedPlayers || teeTime.reservedPlayers
+    reservedPlayers = _.sortBy reservedPlayers, (player) ->
       if player.userId == Meteor.userId() then 0 else 1
+    availableSpots = teeTime.potentialSpots - reservedPlayers.length
 
     for player in reservedPlayers
       playerDetails = @getUserDetails(player.userId)
@@ -56,7 +57,8 @@ class Helpers
 
   harvestTeeTimePlayers: =>
     players = [{userId: Meteor.userId(), isGuest: false}]
-    if $(".include-golfers").checkbox("is checked")
+    isChecked = $(".include-additional-golfers").checkbox("is checked")
+    if isChecked
       $(".golfer-details").each (i, elem) ->
         $el = $(elem)
         isMember = $el.find(".is-member").checkbox("is checked")
@@ -68,18 +70,6 @@ class Helpers
           name = $el.find("input[name='guest-name']").val()
           players.push({userId: Meteor.userId(), isGuest: true, name: name})
     players
-
-  openBookTeeTimeModal: (timestamp) =>
-    data =
-      timestamp: timestamp
-      userId: Meteor.userId()
-    Session.set("modal_book_tee_time_data", data)
-    onApprove = =>
-      data = Session.get("modal_book_tee_time_data") || {}
-      teeTime = @getTeeTime(new Date(data.timestamp))
-      players = @harvestTeeTimePlayers()
-      Meteor.call "bookTeeTime", teeTime._id, players
-    openModal(".book-tee-time.modal", onApprove)
 
   openCancelTeeTimeModal: (timestamp) ->
     data =

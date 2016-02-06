@@ -29,4 +29,5 @@ UI.registerHelper "availableSpots", (context, options) ->
 UI.registerHelper "range", (context, options) ->
   if context
     start = options?.hash?.start || 0
-    [start...context]
+    end = if options?.hash?.inclusive then (context + 1) else context
+    [start...end]
