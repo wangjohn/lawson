@@ -1,10 +1,10 @@
-Template.available_player_card.onRendered ->
-  @$(".image").dimmer({on: "hover"})
-
-Template.player_card.onRendered ->
+Template.available_player_card_bookable_image.rendered = ->
   @$(".image.dimmable").dimmer({on: "hover"})
 
-Template.available_player_card.events
+Template.player_card.rendered = ->
+  @$(".image.dimmable").dimmer({on: "hover"})
+
+Template.available_player_card_bookable_image.events
   "click .open-book-tee-time": (evt) ->
     timestampStr = $(evt.currentTarget).closest(".item").attr("data-timestamp")
     data =

@@ -47,41 +47,33 @@
   </div>
 </template>
 
-<template name="unbookable_available_player_card">
-  <div class="ui card">
-    <div class="ui image">
-      <img src="/images/default_profile.png">
-    </div>
-    <div class="content">
-      {{> available_player_card_content}}
-    </div>
-  </div>
-</template>
-
 <template name="available_player_card">
   <div class="ui card">
-    <div class="ui medium blurring dimmable image">
-      <div class="ui dimmer transition hidden">
-        <div class="content">
-          <div class="center">
-            <div class="ui green inverted button open-book-tee-time">Book tee time</div>
-          </div>
+    {{#if this.canBook}}
+      {{> available_player_card_bookable_image}}
+    {{else}}
+      <div class="ui image">
+        <img src="/images/default_profile.png">
+      </div>
+    {{/if}}
+    <div class="content">
+      <h4 class="ui green header">Available spot</h4>
+      <div class="meta">
+        <span class="meta-content"></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="available_player_card_bookable_image">
+  <div class="ui medium blurring dimmable image">
+    <div class="ui dimmer transition hidden">
+      <div class="content">
+        <div class="center">
+          <div class="ui green inverted button open-book-tee-time">Book tee time</div>
         </div>
       </div>
-      <img src="/images/default_profile.png">
     </div>
-    <div class="content">
-      {{> available_player_card_content}}
-    </div>
+    <img src="/images/default_profile.png">
   </div>
-</template>
-
-<template name="available_player_card_content">
-  <h4 class="ui green header">Available spot</h4>
-  <div class="meta">
-    <span class="meta-content"></span>
-  </div>
-</template>
-
-<template name="player_card_image">
 </template>

@@ -8,11 +8,7 @@
         {{#if this.isReserved}}
           {{> player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
         {{else}}
-          {{#if canBook}}
-            {{> available_player_card}}
-          {{else}}
-            {{> unbookable_available_player_card}}
-          {{/if}}
+          {{> available_player_card canBook=canBook}}
         {{/if}}
       {{/each}}
     </div>
