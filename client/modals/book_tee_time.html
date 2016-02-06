@@ -41,18 +41,22 @@
           </div>
         </div>
         {{> modal_book_tee_time_golfers}}
+        <div class="ui inline fields">
+          {{> tee_time data=teeTimeData.data teeTime=teeTimeData.teeTime hideHeader=true}}
+        </div>
+        <div class="ui inline fields">
+          <div class="actions">
+            <div class="ui grey cancel button">
+              <i class="remove icon"></i>
+              Nevermind
+            </div>
+            <div class="ui green ok button">
+              <i class="checkmark icon"></i>
+              Book tee time
+            </div>
+          </div>
+        </div>
       </form>
-      {{> tee_time data=teeTimeData.data teeTime=teeTimeData.teeTime hideHeader=true}}
-    </div>
-    <div class="actions">
-      <div class="ui grey cancel button">
-        <i class="remove icon"></i>
-        Nevermind
-      </div>
-      <div class="ui green ok button">
-        <i class="checkmark icon"></i>
-        Book tee time
-      </div>
     </div>
     {{#if isLoading}}
       <div class="ui active inverted dimmer">

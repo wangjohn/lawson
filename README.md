@@ -17,6 +17,7 @@ TODO
 
 DONE
 
+- Better formatting for the book tee time section.
 - Booking modal should have a clearer additional golfer thing.
 - Get a better date format so it's easier to tell what day you're booking on.
 - My reservations should have an empty state.
