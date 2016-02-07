@@ -9,7 +9,6 @@ TODO
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
-- Fix bug where multiple modals pop up after you exit one. This happens when you lose internet connection.
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 - Make settings menu dropdown larger
 - Better styling for tee times and player cards
@@ -17,6 +16,7 @@ TODO
 
 DONE
 
+- Fix bug where multiple modals pop up after you exit one. This happens when you lose internet connection.
 - Better formatting for the book tee time section.
 - Booking modal should have a clearer additional golfer thing.
 - Get a better date format so it's easier to tell what day you're booking on.
