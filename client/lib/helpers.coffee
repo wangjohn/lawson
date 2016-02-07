@@ -8,11 +8,26 @@ getMonday = (date) ->
     diff = (day - 1)
   new Date(date - 1000*60*60*24*diff)
 
-openModal = (selector, onApprove, opts = {}) ->
-  $(selector)
-    .modal("setting", "transition", opts.transition || "horizontal flip")
-    .modal({onApprove: onApprove})
-    .modal("show")
+templateAttach = (template, callback, data) ->
+  if typeof template == "string"
+    template = Template[template]
+  return false if not template
+  if (data)
+    instance = Blaze.renderWithData(template, data, document.body)
+  else
+    instance = Blaze.render(template, document.body)
+  return callback && callback.call(this, instance)
+
+openModal = (template, selector, onApprove, data) ->
+  instanceCallback = (instance) =>
+    $(selector)
+      .modal("setting", "transition", "horizontal flip")
+      .modal({onApprove: onApprove})
+      .modal("show")
+  if $(selector).length == 0
+    templateAttach(Template.modal_cancel_tee_time, instanceCallback, data)
+  else
+    instanceCallback()
 
 class Helpers
   teeTimeData: (teeTime, options = {}) =>
@@ -79,7 +94,7 @@ class Helpers
     onApprove = =>
       teeTime = @getTeeTime(new Date(data.timestamp))
       Meteor.call("cancelTeeTime", data.userId, teeTime._id)
-    openModal(".cancel-tee-time.modal", onApprove)
+    openModal(Template.modal_cancel_tee_time, ".modal.cancel-tee-time", onApprove)
 
   getNextDays: (date) ->
     date ||= new Date()
