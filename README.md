@@ -1,5 +1,7 @@
 NEXT UP
 
+- Scrollspy should be extended 15px further down
+- Figure out a way to do scrollspy without the timeout
 - Make player cards smaller in the content section
 
 TODO
