@@ -4,7 +4,6 @@ NEXT UP
 
 TODO
 
-- Fix modal being in a weird position when it is opened.
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
@@ -16,6 +15,7 @@ TODO
 
 DONE
 
+- Fix modal being in a weird position when it is opened.
 - Fix bug where multiple modals pop up after you exit one. This happens when you lose internet connection.
 - Better formatting for the book tee time section.
 - Booking modal should have a clearer additional golfer thing.
