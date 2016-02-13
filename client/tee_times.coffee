@@ -13,7 +13,8 @@ Template.tee_times.rendered = ->
       if matchedData and matchedData.length >= 2
         day = matchedData[1]
         teeTimeSelector = "#tee-times-#{day}"
-        height = $(teeTimeSelector).height()
+        margin = $(teeTimeSelector).outerHeight(true) - $(teeTimeSelector).outerHeight()
+        height = $(teeTimeSelector).outerHeight() + Math.floor(margin / 2, 10)
         new ScrollMagic.Scene({triggerElement: teeTimeSelector, triggerHook: 0, duration: height})
           .setClassToggle("#menu-item-#{day}", "active")
           .addTo(controller)

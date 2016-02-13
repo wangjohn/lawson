@@ -1,11 +1,11 @@
 NEXT UP
 
-- Scrollspy should be extended 15px further down
 - Figure out a way to do scrollspy without the timeout
 - Make player cards smaller in the content section
 
 TODO
 
+- No tee times available indicator
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
@@ -17,6 +17,7 @@ TODO
 
 DONE
 
+- Scrollspy should be extended 15px further down
 - Fix modal being in a weird position when it is opened.
 - Fix bug where multiple modals pop up after you exit one. This happens when you lose internet connection.
 - Better formatting for the book tee time section.
