@@ -1,10 +1,10 @@
 NEXT UP
 
-- Figure out a way to do scrollspy without the timeout
 - Make player cards smaller in the content section
 
 TODO
 
+- Figure out a way to do scrollspy without the timeout
 - No tee times available indicator
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
