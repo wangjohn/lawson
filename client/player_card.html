@@ -1,5 +1,53 @@
 <template name="player_card">
   <div class="ui centered card">
+    <div class="content">
+      {{#if this.isGuest}}
+        <img class="ui right floated mini image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+      {{else}}
+        {{#if this.data.profileImage.url}}
+          <img class="ui right floated mini image" src="{{this.data.profileImage.url}}">
+        {{else}}
+          <img class="ui right floated mini image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
+        {{/if}}
+      {{/if}}
+      <div class="header">
+        {{this.name}}
+      </div>
+      <div class="meta">
+        {{#if this.isGuest}}
+          <span class="meta-content">Guest of {{this.data.firstName}} {{this.data.lastName}}</span>
+        {{else}}
+          {{#if this.data.yearJoined}}
+            <span class="meta-content">Joined {{this.data.yearJoined}}</span>
+          {{else}}
+            <span class="meta-content">PGCC Member</span>
+          {{/if}}
+        {{/if}}
+      </div>
+      <div class="description">
+        {{#unless this.isGuest}}
+          {{#if this.data.handicap}}
+            <div class="extra content">
+              <span>
+                <i class="user icon"></i>
+                {{this.data.handicap}} Handicap
+              </span>
+            </div>
+          {{/if}}
+        {{/unless}}
+      </div>
+    </div>
+    {{#if this.canCancel}}
+      <div class="ui bottom attached red button open-cancel-tee-time">
+        <i class="remove user icon"></i>
+        Cancel tee time
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="large_player_card">
+  <div class="ui centered card">
     <div class="ui medium image {{blurrableClass this.canCancel}}">
       {{#if this.canCancel}}
         <div class="ui dimmer transition hidden">
@@ -48,6 +96,21 @@
 </template>
 
 <template name="available_player_card">
+  <div class="ui card">
+    <div class="content">
+      <img class="ui right floated mini image" src="/images/default_profile.png">
+      <div class="header">Available spot</div>
+    </div>
+    {{#if this.canBook}}
+      <div class="ui bottom attached green button open-book-tee-time">
+        <i class="add user icon"></i>
+        Book tee time
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="large_available_player_card">
   <div class="ui card">
     {{#if this.canBook}}
       {{> available_player_card_bookable_image}}

@@ -4,13 +4,23 @@
       <h3 class="ui header">{{formatTime this.teeTime.time}}</h3>
     {{/unless}}
     <div class="ui four cards">
-      {{#each this.data}}
-        {{#if this.isReserved}}
-          {{> player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
-        {{else}}
-          {{> available_player_card canBook=canBook}}
-        {{/if}}
-      {{/each}}
+      {{#if this.useLargeCards}}
+        {{#each this.data}}
+          {{#if this.isReserved}}
+            {{> large_player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
+          {{else}}
+            {{> large_available_player_card canBook=canBook}}
+          {{/if}}
+        {{/each}}
+      {{else}}
+        {{#each this.data}}
+          {{#if this.isReserved}}
+            {{> player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
+          {{else}}
+            {{> available_player_card canBook=canBook}}
+          {{/if}}
+        {{/each}}
+      {{/if}}
     </div>
   </div>
 </template>
