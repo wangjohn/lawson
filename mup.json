@@ -3,6 +3,7 @@
   "servers": [
     {
       "host": "198.199.93.176",
+      "pem": "~/.ssh/id_rsa",
       "username": "root"
     }
   ],
