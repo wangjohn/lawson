@@ -53,7 +53,8 @@ Template.book_tee_time_member.rendered = ->
 
 Template.book_tee_time_member.helpers
   memberDetails: ->
-    UserDetails.find({userId: {$ne: Meteor.userId()}})
+    users = UserDetails.find({userId: {$ne: Meteor.userId()}}).fetch()
+    _.filter(users, (user) -> !Roles.userIsInRole(user.userId, ['admin']))
 
 Template.book_tee_time_golfer.rendered = ->
   @$(".ui.checkbox.is-member").checkbox({

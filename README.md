@@ -15,6 +15,7 @@ TODO
 
 DONE
 
+- Remove admins from the menu of people to book
 - Get first golfer name working correctly.
 - No tee times available indicator
 - Move book tee time modal out of the modal page.
