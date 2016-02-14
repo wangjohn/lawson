@@ -67,6 +67,7 @@ Meteor.methods
       lastName: accountData.lastName
       yearJoined: accountData.yearJoined
       ghinNumber: accountData.ghinNumber
+      golfingMember: true
     if userDetailsData.ghinNumber
       handicap = getHandicap(userDetailsData.ghinNumber)
       userDetailsData["handicap"] = handicap

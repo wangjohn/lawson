@@ -39,3 +39,5 @@ ghinNumber:
   type: String
 handicap:
   type: Float
+golfingMember:
+  type: Boolean
