@@ -26,18 +26,16 @@
   {{#each this}}
   <div class="ui container segment date-container" id="tee-times-{{formatDate this.date}}">
     <h2 class="ui dividing header">{{formatDay this.date}}</h2>
-    {{#if this.teeTimes}}
-      <div class="ui list">
-        {{#each this.teeTimes}}
-          {{#with teeTimeData this}}
-            {{> tee_time this}}
-          {{/with}}
-        {{/each}}
-      </div>
-    {{else}}
-      <i class="folder open outline icon"></i>
-      No times available
-    {{/if}}
+    <div class="ui list">
+      {{#each this.teeTimes}}
+        {{#with teeTimeData this}}
+          {{> tee_time this}}
+        {{/with}}
+      {{else}}
+        <i class="folder open outline icon"></i>
+        No times available
+      {{/each}}
+    </div>
   </div>
   {{/each}}
 </template>

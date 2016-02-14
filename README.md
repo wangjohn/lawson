@@ -5,7 +5,6 @@ NEXT UP
 TODO
 
 - Figure out a way to do scrollspy without the timeout
-- No tee times available indicator
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
@@ -16,6 +15,7 @@ TODO
 
 DONE
 
+- No tee times available indicator
 - Move book tee time modal out of the modal page.
 - Make player cards smaller in the content section
 - Scrollspy should be extended 15px further down
