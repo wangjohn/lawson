@@ -1,7 +1,6 @@
 NEXT UP
 
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
-- Move book tee time modal out of the modal page.
 
 TODO
 
@@ -17,6 +16,7 @@ TODO
 
 DONE
 
+- Move book tee time modal out of the modal page.
 - Make player cards smaller in the content section
 - Scrollspy should be extended 15px further down
 - Fix modal being in a weird position when it is opened.
