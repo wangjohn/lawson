@@ -1,15 +1,11 @@
 <template name="player_card">
-  <div class="ui centered card">
+  <div class="ui centered card unavailable-spot">
     <div class="content">
-      {{#if this.isGuest}}
-        <img class="ui right floated mini image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
-      {{else}}
+      {{#unless this.isGuest}}
         {{#if this.data.profileImage.url}}
           <img class="ui right floated mini image" src="{{this.data.profileImage.url}}">
-        {{else}}
-          <img class="ui right floated mini image" src="http://www.semantic-ui.com/images/wireframe/white-image.png">
         {{/if}}
-      {{/if}}
+      {{/unless}}
       <div class="header">
         {{this.name}}
       </div>
@@ -96,9 +92,8 @@
 </template>
 
 <template name="available_player_card">
-  <div class="ui card">
+  <div class="ui card available-spot">
     <div class="content">
-      <img class="ui right floated mini image" src="/images/default_profile.png">
       <div class="header">Available spot</div>
     </div>
     {{#if this.canBook}}
