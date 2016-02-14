@@ -10,7 +10,7 @@ Template.available_player_card.events
     data =
       timestamp: parseInt(timestampStr, 10)
       userId: Meteor.userId()
-    Session.set("modal_book_tee_time_data", data)
+    Session.set("book_tee_time_data", data)
     Router.go("/book")
 
 Template.player_card.events

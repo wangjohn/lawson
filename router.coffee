@@ -10,7 +10,7 @@ Router.route "/tee_times", ->
   @render "menu", {to: "menu"}
 
 Router.route "/book",
-  template: "modal_book_tee_time"
+  template: "book_tee_time"
   yieldRegions:
     menu: {to: "menu"}
 

@@ -1,4 +1,4 @@
-<template name="modal_book_tee_time">
+<template name="book_tee_time">
   <div class="ui book-tee-time">
     <div class="ui center aligned icon header">
       <i class="add user icon"></i>
@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        {{> modal_book_tee_time_golfers}}
+        {{> book_tee_time_golfers}}
         <div class="ui inline fields">
           {{> tee_time data=teeTimeData.data teeTime=teeTimeData.teeTime hideHeader=true useLargeCards=true}}
         </div>
@@ -66,20 +66,20 @@
   </div>
 </template>
 
-<template name="modal_book_tee_time_golfers">
+<template name="book_tee_time_golfers">
   {{#if showGolfers}}
     <div class="ui inline fields">
-      {{> modal_book_tee_time_user 1}}
+      {{> book_tee_time_user 1}}
     </div>
     {{#each range numGolfers start=1}}
       <div class="ui inline fields golfer-details">
-        {{> modal_book_tee_time_golfer this}}
+        {{> book_tee_time_golfer this}}
       </div>
     {{/each}}
   {{/if}}
 </template>
 
-<template name="modal_book_tee_time_user">
+<template name="book_tee_time_user">
   <div class="ui two wide field">
     <label>Golfer {{this}}</label>
   </div>
@@ -93,7 +93,7 @@
   </div>
 </template>
 
-<template name="modal_book_tee_time_golfer">
+<template name="book_tee_time_golfer">
   <div class="ui two wide field">
     <label>Golfer {{golferNumber this}}</label>
   </div>
@@ -104,7 +104,7 @@
     </div>
   </div>
   <div class="ui ten wide field add-member">
-    {{> modal_book_tee_time_member}}
+    {{> book_tee_time_member}}
   </div>
   <div class="ui ten wide field hidden-field add-guest">
     <div class="ui left icon input">
@@ -114,7 +114,7 @@
   </div>
 </template>
 
-<template name="modal_book_tee_time_member">
+<template name="book_tee_time_member">
   <div class="ui fluid floating dropdown labeled icon button select-member">
     <i class="filter icon"></i>
     <span class="text">Select member</span>
