@@ -77,3 +77,9 @@ Template.book_tee_time.events
       Router.go("/reservations")
   "click .actions .cancel": (evt) ->
     Router.go("/tee_times")
+
+Template.book_tee_time_user.helpers
+  name: ->
+    userDetails = UserDetails.findOne({userId: Meteor.userId()})
+    if userDetails
+      "#{userDetails.firstName} #{userDetails.lastName}"

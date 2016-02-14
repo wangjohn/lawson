@@ -15,6 +15,7 @@ TODO
 
 DONE
 
+- Get first golfer name working correctly.
 - No tee times available indicator
 - Move book tee time modal out of the modal page.
 - Make player cards smaller in the content section
