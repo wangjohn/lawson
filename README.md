@@ -1,5 +1,6 @@
 NEXT UP
 
+- Remove all the cluttered buttons and streamline the booking tee times page
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 
 TODO
