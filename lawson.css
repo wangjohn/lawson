@@ -39,6 +39,7 @@
 
 .ui.cards > .tee-time-information-card.card {
   box-shadow: none;
+  background-color: #f3f4f5;
 }
 .ui.cards > .tee-time-information-card.card .content {
   padding-left: 0;
