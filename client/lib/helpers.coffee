@@ -54,10 +54,7 @@ class Helpers
       data.push
         isReserved: false
 
-    if "canBook" of options
-      canBook = options["canBook"]
-    else
-      canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
+    canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
     result =
       data: data
       canBook: canBook

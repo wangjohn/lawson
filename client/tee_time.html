@@ -1,44 +1,47 @@
 <template name="tee_time">
   <div class="item" data-timestamp="{{formatTimestamp this.teeTime.time}}">
-    {{#unless this.hideHeader}}
-      <h3 class="ui header">{{formatTime this.teeTime.time}}</h3>
-    {{/unless}}
-    <div class="ui five cards">
-      <div class="ui card">
-        <div class="content">
-          <div class="ui centered header">
-            {{formatTime this.teeTime.time}}
-          </div>
-        </div>
-        {{#if this.canBook}}
-          <div class="ui bottom attached green button open-book-tee-time">
-            <i class="add user icon"></i>
-            Book tee time
-          </div>
-        {{else}}
-          <div class="ui bottom attached red button open-cancel-tee-time">
-            <i class="remove user icon"></i>
-            Cancel tee time
-          </div>
-        {{/if}}
-      </div>
+    <div class="ui {{numCards this}} cards">
+      {{#unless this.hideInfoCard}}
+        {{> tee_time_information_card this}}
+      {{/unless}}
       {{#if this.useLargeCards}}
         {{#each this.data}}
           {{#if this.isReserved}}
-            {{> large_player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
+            {{> large_player_card data=this.player name=this.name isGuest=this.isGuest}}
           {{else}}
-            {{> large_available_player_card canBook=canBook}}
+            {{> large_available_player_card}}
           {{/if}}
         {{/each}}
       {{else}}
         {{#each this.data}}
           {{#if this.isReserved}}
-            {{> player_card data=this.player name=this.name isGuest=this.isGuest canCancel=this.canCancel}}
+            {{> player_card data=this.player name=this.name isGuest=this.isGuest}}
           {{else}}
-            {{> available_player_card canBook=canBook}}
+            {{> available_player_card}}
           {{/if}}
         {{/each}}
       {{/if}}
     </div>
+  </div>
+</template>
+
+<template name="tee_time_information_card">
+  <div class="ui card">
+    <div class="content">
+      <div class="ui centered header">
+        {{formatTime this.teeTime.time}}
+      </div>
+    </div>
+    {{#if this.canBook}}
+      <div class="ui bottom attached green button open-book-tee-time">
+        <i class="add user icon"></i>
+        Book tee time
+      </div>
+    {{else}}
+      <div class="ui bottom attached red button open-cancel-tee-time">
+        <i class="remove user icon"></i>
+        Cancel tee time
+      </div>
+    {{/if}}
   </div>
 </template>
