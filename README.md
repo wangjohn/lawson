@@ -6,17 +6,17 @@ NEXT UP
 
 TODO
 
-- Figure out a way to do scrollspy without the timeout
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
 - Make settings menu dropdown larger
-- Better styling for tee times and player cards
 - Admins should be able to add anyone to a tee time
 
 DONE
 
+- Better styling for tee times and player cards
+- Figure out a way to do scrollspy without the timeout
 - Remove all the cluttered buttons and streamline the booking tee times page
 - Remove admins from the menu of people to book
 - Get first golfer name working correctly.
