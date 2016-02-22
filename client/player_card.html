@@ -1,5 +1,5 @@
 <template name="player_card">
-  <div class="ui centered card unavailable-spot">
+<div class="ui centered card">
     <div class="content">
       {{#unless this.isGuest}}
         {{#if this.data.profileImage.url}}
@@ -74,7 +74,10 @@
 <template name="available_player_card">
   <div class="ui card available-spot">
     <div class="content">
-      <div class="header">Available spot</div>
+      <div class="ui tiny centered icon header">
+        <i class="circle notched icon"></i>
+        Available spot
+      </div>
     </div>
   </div>
 </template>

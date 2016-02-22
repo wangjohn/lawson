@@ -36,7 +36,3 @@
 .ui.cards > .available-spot.card > .content > .header {
   color: rgb(33,186,69);
 }
-
-.cards .unavailable-spot.card {
-  background-color: rgba(128,128,128,0.3);
-}
