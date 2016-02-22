@@ -1,6 +1,7 @@
 NEXT UP
 
-- Remove all the cluttered buttons and streamline the booking tee times page
+- Prevent 2 large player cards from being really small when booking
+- Add scrollspy back to the top (should be a sticky bar I think)
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 
 TODO
@@ -16,6 +17,7 @@ TODO
 
 DONE
 
+- Remove all the cluttered buttons and streamline the booking tee times page
 - Remove admins from the menu of people to book
 - Get first golfer name working correctly.
 - No tee times available indicator
