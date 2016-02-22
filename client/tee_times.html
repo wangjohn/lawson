@@ -1,20 +1,6 @@
 <template name="tee_times">
   <div class="ui stackable grid">
-    <div class="three wide column">
-      <div class="ui vertical menu" id="tee-times-menu">
-        {{#each menuData}}
-          <div class="item">
-            Week of {{this.currentWeek}}
-            <div class="menu">
-              {{#each this.dates}}
-                <a id="menu-item-{{formatDate this}}" href="#tee-times-{{formatDate this}}" class="item">{{formatDay this}}</a>
-              {{/each}}
-            </div>
-          </div>
-        {{/each}}
-      </div>
-    </div>
-    <div class="thirteen wide column tee-times" id="tee-times-list">
+    <div class="wide column tee-times" id="tee-times-list">
       <div class="ui container">
         {{> tee_time_list dateData}}
       </div>

@@ -44,29 +44,23 @@ class Helpers
         fullName = player.name
       else
         fullName = "#{playerDetails?.firstName} #{playerDetails?.lastName}"
-      if "canCancel" of options
-        canCancel = options["canCancel"]
-      else
-        canCancel = player.userId and player.userId == Meteor.userId()
       data.push
         isReserved: true
         isGuest: player.isGuest
         player: playerDetails
         name: fullName
-        canCancel: canCancel
+
+    for i in [0...availableSpots]
+      data.push
+        isReserved: false
 
     if "canBook" of options
       canBook = options["canBook"]
     else
       canBook = !_.some(reservedPlayers, (player) -> player.userId == Meteor.userId())
-
-    for i in [0...availableSpots]
-      data.push
-        isReserved: false
-        canBook: canBook
-
     result =
       data: data
+      canBook: canBook
       teeTime: teeTime
     result
 
@@ -89,11 +83,10 @@ class Helpers
   openCancelTeeTimeModal: (timestamp) ->
     data =
       timestamp: timestamp
-      userId: Meteor.userId()
     Session.set("modal_cancel_tee_time_data", data)
     onApprove = =>
       teeTime = @getTeeTime(new Date(data.timestamp))
-      Meteor.call("cancelTeeTime", data.userId, teeTime._id)
+      Meteor.call("cancelTeeTime", Meteor.userId(), teeTime._id)
     openModal(Template.modal_cancel_tee_time, ".modal.cancel-tee-time", onApprove)
 
   getNextDays: (date) ->

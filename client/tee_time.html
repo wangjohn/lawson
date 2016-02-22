@@ -3,7 +3,25 @@
     {{#unless this.hideHeader}}
       <h3 class="ui header">{{formatTime this.teeTime.time}}</h3>
     {{/unless}}
-    <div class="ui four cards">
+    <div class="ui five cards">
+      <div class="ui card">
+        <div class="content">
+          <div class="ui centered header">
+            {{formatTime this.teeTime.time}}
+          </div>
+        </div>
+        {{#if this.canBook}}
+          <div class="ui bottom attached green button open-book-tee-time">
+            <i class="add user icon"></i>
+            Book tee time
+          </div>
+        {{else}}
+          <div class="ui bottom attached red button open-cancel-tee-time">
+            <i class="remove user icon"></i>
+            Cancel tee time
+          </div>
+        {{/if}}
+      </div>
       {{#if this.useLargeCards}}
         {{#each this.data}}
           {{#if this.isReserved}}
