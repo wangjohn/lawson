@@ -21,18 +21,7 @@
         {{/if}}
       </div>
     </div>
-    {{#unless this.isGuest}}
-      {{#if this.data.handicap}}
-        <div class="extra content">
-          <div class="description">
-            <a target="_blank" href="{{handicapLink this.data.ghinNumber}}">
-              <i class="user icon"></i>
-              {{this.data.handicap}} Handicap
-            </a>
-          </div>
-        </div>
-      {{/if}}
-    {{/unless}}
+    {{> player_card_extra_content this}}
   </div>
 </template>
 
@@ -63,17 +52,23 @@
         {{/if}}
       </div>
     </div>
-    {{#unless this.isGuest}}
-      {{#if this.data.handicap}}
-        <div class="extra content">
-          <span>
+    {{> player_card_extra_content this}}
+  </div>
+</template>
+
+<template name="player_card_extra_content">
+  {{#unless this.isGuest}}
+    {{#if this.data.handicap}}
+      <div class="extra content">
+        <div class="description">
+          <a target="_blank" href="{{handicapLink this.data.ghinNumber}}">
             <i class="user icon"></i>
             {{this.data.handicap}} Handicap
-          </span>
+          </a>
         </div>
-      {{/if}}
-    {{/unless}}
-  </div>
+      </div>
+    {{/if}}
+  {{/unless}}
 </template>
 
 <template name="available_player_card">
