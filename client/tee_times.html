@@ -10,7 +10,7 @@
 
 <template name="tee_time_list">
   {{#each this}}
-  <div class="ui container segment date-container" id="tee-times-{{formatDate this.date}}">
+  <div class="ui container date-container" id="tee-times-{{formatDate this.date}}">
     <h2 class="ui dividing header">{{formatDay this.date}}</h2>
     <div class="ui list">
       {{#each this.teeTimes}}

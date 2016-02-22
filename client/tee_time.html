@@ -26,22 +26,22 @@
 </template>
 
 <template name="tee_time_information_card">
-  <div class="ui card">
+  <div class="ui card tee-time-information-card">
     <div class="content">
       <div class="ui centered header">
         {{formatTime this.teeTime.time}}
       </div>
+      {{#if this.canBook}}
+        <div class="ui fluid green button open-book-tee-time">
+          <i class="add user icon"></i>
+          Book tee time
+        </div>
+      {{else}}
+        <div class="ui fluid red button open-cancel-tee-time">
+          <i class="remove user icon"></i>
+          Cancel tee time
+        </div>
+      {{/if}}
     </div>
-    {{#if this.canBook}}
-      <div class="ui bottom attached green button open-book-tee-time">
-        <i class="add user icon"></i>
-        Book tee time
-      </div>
-    {{else}}
-      <div class="ui bottom attached red button open-cancel-tee-time">
-        <i class="remove user icon"></i>
-        Cancel tee time
-      </div>
-    {{/if}}
   </div>
 </template>

@@ -36,3 +36,21 @@
 .ui.cards > .available-spot.card > .content > .header {
   color: rgb(33,186,69);
 }
+
+.ui.cards > .tee-time-information-card.card {
+  box-shadow: none;
+}
+.ui.cards > .tee-time-information-card.card .content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Tee times */
+
+.tee-times .date-container {
+  margin-bottom: 50px;
+}
+
+.tee-times .date-container .list > .item {
+  margin-bottom: 25px;
+}
