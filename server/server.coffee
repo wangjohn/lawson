@@ -95,6 +95,8 @@ Meteor.methods
       throw new Meteor.Error("tee-tee-full", "This tee time is full")
     if teeTime.potentialSpots < teeTime.reservedPlayers.length + players.length
       throw new Meteor.Error("not-enough-spots", "There aren't enough spots available to book that many people")
+    if _.uniq(_.pluck(players, "userId")).length != players.length
+      throw new Meteor.error("multiple-booking", "You cannot book a player multiple times")
     nonGuestAdditions = _.filter(players, (player) -> not player.isGuest)
     nonGuestReserved = _.filter(teeTime.reservedPlayers, (player) -> not player.isGuest)
     for player in nonGuestAdditions

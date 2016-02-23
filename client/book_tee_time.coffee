@@ -51,9 +51,21 @@ Template.book_tee_time_member.rendered = ->
       Session.set("book_tee_time_golfers_changed", Date.now())
   })
 
+
 Template.book_tee_time_member.helpers
-  memberDetails: ->
-    UserDetails.find({userId: {$ne: Meteor.userId()}, golfingMember: {$ne: false}})
+  memberDetails: (golferNumber) ->
+    Session.get("book_tee_time_golfers_changed")
+    $golferDetails = $(".golfer-details[data-golfer-number='#{golferNumber}']")
+    $bookingForm = $(".booking-form")
+    alreadyUsedIds = [Meteor.userId()]
+    $bookingForm.find(".golfer-details").each (i, elem) ->
+      $el = $(elem)
+      if parseInt($el.attr("data-golfer-number"), 10) != golferNumber
+        userId = $el.find(".select-member").dropdown("get value")
+        if typeof userId == 'string'
+          alreadyUsedIds.push(userId)
+
+    UserDetails.find({userId: {$nin: alreadyUsedIds}, golfingMember: {$ne: false}})
 
 Template.book_tee_time_golfer.rendered = ->
   @$(".ui.checkbox.is-member").checkbox({

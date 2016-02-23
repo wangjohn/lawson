@@ -72,7 +72,7 @@
       {{> book_tee_time_user 1}}
     </div>
     {{#each range numGolfers start=1}}
-      <div class="ui inline fields golfer-details">
+      <div class="ui inline fields golfer-details" data-golfer-number="{{this}}">
         {{> book_tee_time_golfer this}}
       </div>
     {{/each}}
@@ -104,7 +104,7 @@
     </div>
   </div>
   <div class="ui ten wide field add-member">
-    {{> book_tee_time_member}}
+    {{> book_tee_time_member golferNumber=this}}
   </div>
   <div class="ui ten wide field hidden-field add-guest">
     <div class="ui left icon input">
@@ -129,7 +129,7 @@
         Member name
       </div>
       <div class="scrolling menu">
-        {{#each memberDetails}}
+        {{#each memberDetails this.golferNumber}}
           <div class="item" data-value="{{this.userId}}">
             {{this.firstName}} {{this.lastName}}
           </div>
