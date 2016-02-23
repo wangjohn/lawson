@@ -1,11 +1,12 @@
 NEXT UP
 
+- Make sure that you can't add the same player to a tee time multiple times.
 - Prevent 2 large player cards from being really small when booking
 - Add scrollspy back to the top (should be a sticky bar I think)
-- Maybe make a /tee_times/#{time} page for individual days and/or individual times
 
 TODO
 
+- Maybe make a /tee_times/#{time} page for individual days and/or individual times
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
