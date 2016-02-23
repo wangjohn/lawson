@@ -1,6 +1,5 @@
 NEXT UP
 
-- Make sure that you can't add the same player to a tee time multiple times.
 - Prevent 2 large player cards from being really small when booking
 - Add scrollspy back to the top (should be a sticky bar I think)
 
@@ -16,6 +15,7 @@ TODO
 
 DONE
 
+- Make sure that you can't add the same player to a tee time multiple times.
 - Better styling for tee times and player cards
 - Figure out a way to do scrollspy without the timeout
 - Remove all the cluttered buttons and streamline the booking tee times page

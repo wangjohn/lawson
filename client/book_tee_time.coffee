@@ -51,13 +51,20 @@ Template.book_tee_time_member.rendered = ->
       Session.set("book_tee_time_golfers_changed", Date.now())
   })
 
-
 Template.book_tee_time_member.helpers
   memberDetails: (golferNumber) ->
     Session.get("book_tee_time_golfers_changed")
+    alreadyUsedIds = [Meteor.userId()]
+
+    # Prevent selection of players already reserved in the tee time
+    data = Session.get("book_tee_time_data") || {}
+    if data.timestamp
+      teeTime = Helpers.getTeeTime(new Date(data.timestamp))
+      alreadyUsedIds = alreadyUsedIds.concat(_.pluck(teeTime.reservedPlayers, "userId"))
+
+    # Prevent selection of players who are reserved in other dropdowns
     $golferDetails = $(".golfer-details[data-golfer-number='#{golferNumber}']")
     $bookingForm = $(".booking-form")
-    alreadyUsedIds = [Meteor.userId()]
     $bookingForm.find(".golfer-details").each (i, elem) ->
       $el = $(elem)
       if parseInt($el.attr("data-golfer-number"), 10) != golferNumber
@@ -65,6 +72,7 @@ Template.book_tee_time_member.helpers
         if typeof userId == 'string'
           alreadyUsedIds.push(userId)
 
+    # Find all golfering players who aren't in the alreadyUsedIds array
     UserDetails.find({userId: {$nin: alreadyUsedIds}, golfingMember: {$ne: false}})
 
 Template.book_tee_time_golfer.rendered = ->
