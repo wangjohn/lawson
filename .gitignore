@@ -1,3 +1,6 @@
 .meteor/local
 .meteor/meteorite
 cfsimages/*
+
+*.swo
+*.swp

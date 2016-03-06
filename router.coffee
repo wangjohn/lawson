@@ -19,9 +19,15 @@ Router.route "/add_tee_times",
   yieldRegions:
     menu: {to: "menu"}
 
-Router.route "/settings", ->
-  @render "settings"
-  @render "menu", {to: "menu"}
+Router.route "/settings",
+  template: "settings"
+  yieldRegions:
+    menu: {to: "menu"}
+
+Router.route "/change_password",
+  template: "change_password"
+  yieldRegions:
+    menu: {to: "menu"}
 
 Router.route "/signup",
   template: "signup"
