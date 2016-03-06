@@ -1,17 +1,17 @@
 NEXT UP
 
-- Prevent 2 large player cards from being really small when booking
-- Add scrollspy back to the top (should be a sticky bar I think)
+- Admins should be able to add anyone to a tee time
 
 TODO
 
+- Prevent 2 large player cards from being really small when booking
+- Add scrollspy back to the top (should be a sticky bar I think)
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 - Finish template for booking confirmation email.
 - Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
 - Make settings menu dropdown larger
-- Admins should be able to add anyone to a tee time
 
 DONE
 
