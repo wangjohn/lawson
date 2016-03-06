@@ -1,5 +1,7 @@
 NEXT UP
 
+- Forgot password emails
+- Need to verify email before we can allow you to login
 - Admins should be able to add anyone to a tee time
 
 TODO
