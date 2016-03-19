@@ -34,11 +34,18 @@ Router.route "/signup",
 
 Router.route "/login",
   template: "login"
+  yieldRegions:
+    menu: {to: "menu"}
   onBeforeAction: ->
     if Meteor.user()
       @redirect("/")
     else
       @next()
+
+Router.route "/forgot_password",
+  template: "forgot_password"
+  yieldRegions:
+    menu: {to: "menu"}
 
 Router.route "/reservations",
   template: "reservations"

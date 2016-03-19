@@ -1,5 +1,6 @@
 NEXT UP
 
+- Signups should be available but only for certain email addresses
 - Forgot password emails
 - Need to verify email before we can allow you to login
 - Admins should be able to add anyone to a tee time

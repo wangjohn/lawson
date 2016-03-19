@@ -19,6 +19,10 @@
   width: 100%;
 }
 
+.login-column .forgot-password-link {
+  margin-top: 10px;
+}
+
 .settings-dropdown span.name {
   margin-right: 10px;
 }
