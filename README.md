@@ -1,7 +1,6 @@
 NEXT UP
 
 - Signups should be available but only for certain email addresses
-- Forgot password emails
 - Need to verify email before we can allow you to login
 - Admins should be able to add anyone to a tee time
 
@@ -18,6 +17,7 @@ TODO
 
 DONE
 
+- Forgot password emails
 - Make sure that you can't add the same player to a tee time multiple times.
 - Better styling for tee times and player cards
 - Figure out a way to do scrollspy without the timeout
