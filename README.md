@@ -1,5 +1,6 @@
 NEXT UP
 
+- Admins should be able to cancel anyone in a tee time
 - Admins should be able to add guest to a specific member
 
 TODO
