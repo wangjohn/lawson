@@ -1,7 +1,5 @@
 NEXT UP
 
-- Signups should be available but only for certain email addresses
-- Need to verify email before we can allow you to login
 - Admins should be able to add anyone to a tee time
 
 TODO
@@ -10,13 +8,15 @@ TODO
 - Add scrollspy back to the top (should be a sticky bar I think)
 - Maybe make a /tee_times/#{time} page for individual days and/or individual times
 - Finish template for booking confirmation email.
-- Figure out how people will be creating accounts.
 - Feed of what everyone else is currently doing -- probably the PGCC dashboard home page.
 - Create a "My Statistics" page, where you can see total rounds played, common partners, distribution of tee times, distributino of days of the week, distribution of handicaps played with.
 - Make settings menu dropdown larger
 
 DONE
 
+- Figure out how people will be creating accounts.
+- Signups should be available but only for certain email addresses
+- Need to verify email before we can allow you to login
 - Forgot password emails
 - Make sure that you can't add the same player to a tee time multiple times.
 - Better styling for tee times and player cards
