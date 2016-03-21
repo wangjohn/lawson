@@ -62,7 +62,10 @@ class Helpers
     result
 
   harvestTeeTimePlayers: =>
-    players = [{userId: Meteor.userId(), isGuest: false}]
+    if Roles.userIsInRole(Meteor.user(), 'admin')
+      players = []
+    else
+      players = [{userId: Meteor.userId(), isGuest: false}]
     isChecked = $(".include-additional-golfers").checkbox("is checked")
     if isChecked
       $(".golfer-details").each (i, elem) ->

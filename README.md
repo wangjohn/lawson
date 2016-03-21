@@ -1,6 +1,6 @@
 NEXT UP
 
-- Admins should be able to add anyone to a tee time
+- Admins should be able to add guest to a specific member
 
 TODO
 
@@ -14,6 +14,7 @@ TODO
 
 DONE
 
+- Admins should be able to add anyone to a tee time
 - Figure out how people will be creating accounts.
 - Signups should be available but only for certain email addresses
 - Need to verify email before we can allow you to login

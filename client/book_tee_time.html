@@ -68,14 +68,22 @@
 
 <template name="book_tee_time_golfers">
   {{#if showGolfers}}
-    <div class="ui inline fields">
-      {{> book_tee_time_user 1}}
-    </div>
-    {{#each range numGolfers start=1}}
-      <div class="ui inline fields golfer-details" data-golfer-number="{{this}}">
-        {{> book_tee_time_golfer this}}
+    {{#if isInRole 'admin'}}
+      {{#each range numGolfers start=0}}
+        <div class="ui inline fields golfer-details" data-golfer-number="{{this}}">
+          {{> book_tee_time_golfer this}}
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="ui inline fields">
+        {{> book_tee_time_user 1}}
       </div>
-    {{/each}}
+      {{#each range numGolfers start=1}}
+        <div class="ui inline fields golfer-details" data-golfer-number="{{this}}">
+          {{> book_tee_time_golfer this}}
+        </div>
+      {{/each}}
+    {{/if}}
   {{/if}}
 </template>
 
