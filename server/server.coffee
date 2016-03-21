@@ -57,6 +57,9 @@ Meteor.publish "images", ->
 
 Meteor.methods
   createAccount: (accountData) ->
+    allowedEmail = AllowedEmails.findOne({email: accountData.email})
+    if not allowedEmail
+      throw new Meteor.Error("invalid-email", "It doesn't look like you're a PGCC member. Contact an administrator if this is an error and you'd like to set up an account.")
     accountOptions =
       email: accountData.email
       password: accountData.password
@@ -72,7 +75,6 @@ Meteor.methods
       handicap = getHandicap(userDetailsData.ghinNumber)
       userDetailsData["handicap"] = handicap
     UserDetails.insert(userDetailsData)
-    #Accounts.sendVerificationEmail(userId)
 
   updateSettings: (userId, settingsObj) ->
     setObj =

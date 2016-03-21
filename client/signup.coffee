@@ -1,9 +1,15 @@
 Template.signup.helpers
   loading: ->
     Session.get("signup_loading")
+  errorClass: ->
+    if Session.get("signup_errors")
+      "error"
+  errorMessage: ->
+    Session.get("signup_errors")?.reason
 
 Template.signup.rendered = ->
   Session.set("signup_loading", false)
+  Session.set("signup_errors", null)
   formRequirements =
     on: "submit"
     fields:
@@ -28,4 +34,7 @@ Template.signup.events
     Session.set("signup_loading", true)
     Meteor.call "createAccount", accountData, (err) ->
       Session.set("signup_loading", false)
-      Router.go("/")
+      if err
+        Session.set("signup_errors", err)
+      else
+        Router.go("/")
